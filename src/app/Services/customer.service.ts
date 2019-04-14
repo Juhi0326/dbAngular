@@ -10,13 +10,14 @@ import { CustomersComponent } from './../customers/customers.component';
   providedIn: 'root'
 })
 export class CustomerService {
-  items: Observable<any>;
+  items: Observable<any[]>;
+  itemsCollection: AngularFirestoreCollection<any>;
 
 
   constructor(private db: AngularFirestore) {
+    this.items = this.db.collection('proba').valueChanges();
   }
   getCustomers() {
-    this.items = this.db.collection('proba').valueChanges();
     return this.items;
   }
 }
