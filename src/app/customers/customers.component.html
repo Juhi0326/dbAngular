@@ -1,3 +1,5 @@
-<p>
-  customers works!
-</p>
+<ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{item.fName}}
+  </li>
+</ul>

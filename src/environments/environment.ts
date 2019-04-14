@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyBTnbNggW8LbUi5i3uerlB9e3btPo35uYE",
+    authDomain: "proba-6157e.firebaseapp.com",
+    databaseURL: "https://proba-6157e.firebaseio.com",
+    projectId: "proba-6157e",
+    storageBucket: "proba-6157e.appspot.com",
+    messagingSenderId: "412002633454"
+  }
 };
 
 /*
