@@ -9,10 +9,9 @@ import { CustModell } from './../cust-modell';
 })
 export class CustomerService {
   items: Observable<any>;
-  custCollection: AngularFirestoreCollection<CustModell>;
+
 
   constructor(private db: AngularFirestore) {
-    this.custCollection = this.db.collection('proba');
   }
   getCustomers() {
     this.items = this.db.collection('proba').valueChanges();

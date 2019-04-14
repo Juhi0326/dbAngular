@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './../Services/customer.service';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -12,10 +11,10 @@ import { Observable } from 'rxjs';
 export class CustomersComponent implements OnInit {
   title = 'Angular with FireBase';
   data: Observable<any[]>;
-  constructor(private db: AngularFirestore, private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
-    this.customerService.getCustomers();
+    this.data = this.customerService.getCustomers();
   }
 
 }
