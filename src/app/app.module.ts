@@ -8,6 +8,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { CustomerService } from './Services/customer.service';
 
 @NgModule({
   declarations: [
@@ -15,13 +16,14 @@ import { environment } from '../environments/environment';
     CustomersComponent
   ],
   imports: [
+
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

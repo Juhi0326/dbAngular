@@ -1,4 +1,4 @@
-export interface CustModell {
+export class CustModell {
   age: Number;
   email: String;
   fName: String;

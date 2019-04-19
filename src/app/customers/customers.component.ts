@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './../Services/customer.service';
 import { CustModell } from './../cust-modell';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { CustModell } from './../cust-modell';
 })
 export class CustomersComponent implements OnInit {
   title = 'Angular with FireBase';
-  items: any[];
+  items: Observable<CustModell[]>;
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
