@@ -14,9 +14,10 @@ export class CustomerService {
 
 
   constructor(private db: AngularFirestore) {
-    //this.items = this.db.collection('proba').valueChanges();
-    this.itemsCollection = this.db.collection<CustModell>('proba');
-    this.items = this.db.collection('proba').snapshotChanges().pipe(
+
+    this.itemsCollection = this.db.collection('proba', ref => ref.orderBy('id', 'asc'));
+
+    this.items = this.itemsCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as CustModell;
         const id = a.payload.doc.id;
@@ -26,5 +27,8 @@ export class CustomerService {
   }
   getCustomers() {
     return this.items;
+  }
+  addCustomer(item: CustModell) {
+    this.itemsCollection.add(item);
   }
 }
