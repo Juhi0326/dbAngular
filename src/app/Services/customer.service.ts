@@ -15,7 +15,7 @@ export class CustomerService {
 
   constructor(private db: AngularFirestore) {
 
-    this.itemsCollection = this.db.collection('proba', ref => ref.orderBy('id', 'asc'));
+    this.itemsCollection = this.db.collection('proba');
 
     this.items = this.itemsCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
