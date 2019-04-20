@@ -1,21 +1,28 @@
-<ul>
-  <li class="text" *ngFor="let item of items">
-    <b>
-    {{item.fName}}
-     {{item.lName}}
-    </b>
-    <br>
-    {{item.age}} éves
-    <br>
-    email cím: {{item.email}}
-    <br>
-    gender: {{item.gender}}
-    <br>
-    Full time: {{item.isFullTime}}
-    <br>
-    Tapasztalat: {{item.yearsOfExperience}} év
-    <br>
-    id: {{item.id}}
+<div *ngIf="items.length > 0; else noItem" >
+  <ul>
+    <li class="text" *ngFor="let item of items">
+      <b>
+      {{item.fName}}
+      {{item.lName}}
+      </b>
+      <br>
+      {{item.age}} éves
+      <br>
+      email cím: {{item.email}}
+      <br>
+      gender: {{item.gender}}
+      <br>
+      Full time: {{item.isFullTime}}
+      <br>
+      Tapasztalat: {{item.yearsOfExperience}} év
+      <br>
+      id: {{item.id}}
 
-  </li>
-</ul>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noItem>
+  <hr>
+  <h4>There is no item in the list</h4>
+</ng-template>
