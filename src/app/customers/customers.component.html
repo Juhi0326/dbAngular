@@ -1,6 +1,6 @@
-<div *ngIf="items.length > 0; else noItem" >
-  <ul>
-    <li class="text" *ngFor="let item of items">
+<div *ngIf="items?.length > 0; else noItem" >
+  <ul *ngFor="let item of items">
+    <li>
       <b>
       {{item.fName}}
       {{item.lName}}
@@ -17,7 +17,8 @@
       Tapasztalat: {{item.yearsOfExperience}} év
       <br>
       id: {{item.id}}
-
+      <br>
+      <button (click)="deleteItem(item)">remove</button>
     </li>
   </ul>
 </div>

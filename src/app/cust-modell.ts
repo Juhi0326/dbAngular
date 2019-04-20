@@ -1,4 +1,5 @@
 export class CustModell {
+  id?: String;
   age: Number;
   email: String;
   fName: String;
@@ -6,4 +7,5 @@ export class CustModell {
   isFullTime: Boolean;
   lName: String;
   yearsOfExperience: Number;
+
 }

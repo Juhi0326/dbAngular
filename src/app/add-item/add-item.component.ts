@@ -38,4 +38,5 @@ export class AddItemComponent implements OnInit {
       console.log('valami nem oké');
     }
   }
+
 }

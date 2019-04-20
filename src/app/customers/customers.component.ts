@@ -11,13 +11,18 @@ import { Observable } from 'rxjs';
 })
 export class CustomersComponent implements OnInit {
   title = 'Angular with FireBase';
-  items: Observable<CustModell[]>;
+  items: CustModell[];
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
     this.customerService.getCustomers().subscribe(items => {
       this.items = items;
     });
+  }
+
+  deleteItem(item) {
+    this.customerService.deleteCustomer(item);
+
   }
 
 }

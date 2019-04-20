@@ -1,25 +1,32 @@
 <div>
   <form (ngSubmit)="onSubmit()">
     <div>
+      First Name
       <input type="text" placeholder="First Name" [(ngModel)]='item.fName' name='fName' >
     </div>
     <div>
+        Last Name
       <input type="text" placeholder="Last Name" [(ngModel)]='item.lName' name='lName' >
     </div>
     <div>
+      Age
         <input type="text" placeholder="Age" [(ngModel)]='item.age' name='age' >
       </div>
 
     <div>
+      Email
       <input type="text" placeholder="email address" [(ngModel)]='item.email' name='email'>
     </div>
     <div>
+      Gender
       <input type="text" placeholder="Gender" [(ngModel)]='item.gender' name="gender">
     </div>
     <div>
+      Is full time?
       <input type="text" placeholder="isFullTime" [(ngModel)]='item.isFullTime' name="isFullTime">
     </div>
     <div>
+      Years of experience
         <input type="text" placeholder="years Of Experience (number)" [(ngModel)]='item.yearsOfExperience'
         name="yearsOfExperience">
     </div>

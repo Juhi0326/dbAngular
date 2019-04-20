@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CustModell } from './../cust-modell';
 import { map } from 'rxjs/operators';
@@ -9,8 +9,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CustomerService {
-  items: Observable<any>;
-  itemsCollection: AngularFirestoreCollection<any>;
+  items: Observable<CustModell[]>;
+  itemsCollection: AngularFirestoreCollection<CustModell>;
+  itemDoc: AngularFirestoreDocument<CustModell>;
 
 
   constructor(private db: AngularFirestore) {
@@ -30,5 +31,9 @@ export class CustomerService {
   }
   addCustomer(item: CustModell) {
     this.itemsCollection.add(item);
+  }
+  deleteCustomer(item: CustModell) {
+    this.itemDoc = this.db.doc(`items/${item.id}`);
+    this.itemDoc.delete();
   }
 }
