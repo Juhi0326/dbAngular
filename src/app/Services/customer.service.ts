@@ -35,7 +35,7 @@ export class CustomerService {
   }
   deleteCustomer(item: CustModell) {
     console.log(item);
-    this.itemDoc = this.db.doc<CustModell>(`items/${item.id}`);
+    this.itemDoc = this.db.doc(`proba/${item.id}`);
       console.log(this.itemDoc);
     this.itemDoc.delete().then(function() {
       console.log('Document successfully deleted!');
