@@ -5,6 +5,7 @@ import { CustModell } from './../cust-modell';
 import { map } from 'rxjs/operators';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,7 +34,13 @@ export class CustomerService {
     this.itemsCollection.add(item);
   }
   deleteCustomer(item: CustModell) {
-    this.itemDoc = this.db.doc(`items/${item.id}`);
-    this.itemDoc.delete();
+    console.log(item);
+    this.itemDoc = this.db.doc<CustModell>(`items/${item.id}`);
+      console.log(this.itemDoc);
+    this.itemDoc.delete().then(function() {
+      console.log('Document successfully deleted!');
+  }).catch(function(error) {
+      console.error('Error removing document: ', error);
+  });
   }
 }

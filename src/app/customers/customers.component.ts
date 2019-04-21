@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './../Services/customer.service';
 import { CustModell } from './../cust-modell';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -20,7 +19,7 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  deleteItem(item) {
+  deleteItem(item: CustModell) {
     this.customerService.deleteCustomer(item);
 
   }

@@ -31,6 +31,7 @@ export class AddItemComponent implements OnInit {
       this.item.age = 0;
       this.item.email = '';
       this.item.fName = '';
+      this.item.lName = '';
       this.item.gender = '';
       this.item.isFullTime = false;
       this.item.yearsOfExperience = 0;
