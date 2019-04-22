@@ -29,4 +29,10 @@ export class CustomersComponent implements OnInit {
     this.itemToEdit = item;
   }
 
+  clearState() {
+    this.editState = false;
+    this.itemToEdit = null;
+
+  }
+
 }

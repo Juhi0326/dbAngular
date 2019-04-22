@@ -1,5 +1,5 @@
 <div *ngIf="items?.length > 0; else noItem" >
-  <ul *ngFor="let item of items">
+  <ul *ngFor="let item of items" class="collection-item">
     <li>
       <b>
         <br>
@@ -19,7 +19,12 @@
       <br>
       id: {{item.id}}
       <br>
-      <button (click)= "editItem(item)">edit record</button>
+      <a href="#" class="secondary-content">
+        <i (click)= "editItem(item)" class="fas fa-pencil-alt"></i>
+        <div *ngIf="editState" >
+        <i (click)= "clearState(item)" class="fas fa-reply"></i>
+        </div>
+      </a>
       <div *ngIf="editState && itemToEdit.id == item.id" >
           <form (ngSubmit)="updateItem(item)">
               <div>
