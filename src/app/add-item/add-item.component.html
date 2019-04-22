@@ -1,37 +1,47 @@
 <div>
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" class="form-group">
     <div>
-      First Name
-      <input type="text" placeholder="First Name" [(ngModel)]='item.fName' name='fName' >
+
+      <label for="First Name">First name</label>
+      <input type="text" class="form-control" id="First Name" placeholder="First Name" [(ngModel)]='item.fName'
+        name='fName'>
     </div>
     <div>
-        Last Name
-      <input type="text" placeholder="Last Name" [(ngModel)]='item.lName' name='lName' >
+      <label for="Last Name">Last name</label>
+      <input type="text" class="form-control" id="Last Name" placeholder="Last Name" [(ngModel)]='item.lName'
+        name='lName'>
     </div>
     <div>
-      Age
-        <input type="text" placeholder="Age" [(ngModel)]='item.age' name='age' >
-      </div>
+      <label for="Age">Age</label>
+      <input type="text" class="form-control" id="Age" placeholder="Age" [(ngModel)]='item.age' name='age'>
+    </div>
 
     <div>
-      Email
-      <input type="text" placeholder="email address" [(ngModel)]='item.email' name='email'>
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="email address" [(ngModel)]='item.email'
+        name='email'>
     </div>
     <div>
-      Gender
-      <input type="text" placeholder="Gender" [(ngModel)]='item.gender' name="gender">
+      <label for="gender">Gender</label>
+      <input type="text" class="form-control" id="gender" placeholder="Gender" [(ngModel)]='item.gender' name="gender">
     </div>
     <div>
-      Is full time?
-      <input type="text" placeholder="isFullTime" [(ngModel)]='item.isFullTime' name="isFullTime">
+        <label for="fullTime">Full Time</label>
+        <input type="text" class="form-control" id="fullTime" placeholder="isFullTime" [(ngModel)]='item.isFullTime' name="isFullTime">
     </div>
     <div>
-      Years of experience
-        <input type="text" placeholder="years Of Experience (number)" [(ngModel)]='item.yearsOfExperience'
+
+      <label for="years Of Experience">Years Of Experience</label>
+
+      <input type="text" class="form-control" id="years Of Experience" placeholder="years Of Experience (number)" [(ngModel)]='item.yearsOfExperience'
         name="yearsOfExperience">
     </div>
+    <br>
+    
+
+
     <div>
-      <input type="submit" value="Submit">
+      <button type="submit" id="submitButton" class="btn btn-primary btn-lg btn-block"> Submit </button>
     </div>
 
   </form>
