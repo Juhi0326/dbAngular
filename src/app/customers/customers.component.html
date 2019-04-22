@@ -21,9 +21,8 @@
       <br>
       <a href="#" class="secondary-content">
         <i (click)= "editItem(item)" class="fas fa-pencil-alt"></i>
-        <div *ngIf="editState" >
-        <i (click)= "clearState(item)" class="fas fa-reply"></i>
-        </div>
+        <i *ngIf="editState" (click)= "clearState(item)" class="fas fa-reply"></i>
+
       </a>
       <div *ngIf="editState && itemToEdit.id == item.id" >
           <form (ngSubmit)="updateItem(item)">
@@ -57,10 +56,8 @@
                     <input type="text" placeholder="years Of Experience (number)" [(ngModel)]='item.yearsOfExperience'
                     name="yearsOfExperience">
                 </div>
-                <button (click)= "deleteItem(item)">delete record</button>
-                <div>
-                  <input type="submit" value="Update">
-                </div>
+                <button (click)= "updateItem(item)" class="btn btn-warning">Update record</button>
+                <button (click)= "deleteItem(item)" class="btn btn-danger">Delete record</button>
           </form>
       </div>
 

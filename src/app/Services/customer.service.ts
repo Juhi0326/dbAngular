@@ -34,13 +34,17 @@ export class CustomerService {
     this.itemsCollection.add(item);
   }
   deleteCustomer(item: CustModell) {
-    console.log(item);
     this.itemDoc = this.db.doc(`proba/${item.id}`);
-      console.log(this.itemDoc);
     this.itemDoc.delete().then(function() {
       console.log('Document successfully deleted!');
-  }).catch(function(error) {
+        }).catch(function(error) {
       console.error('Error removing document: ', error);
-  });
+        });
   }
+
+  updateCustomer(item: CustModell) {
+    this.itemDoc = this.db.doc(`proba/${item.id}`);
+    this.itemDoc.update(item);
+  }
+
 }
