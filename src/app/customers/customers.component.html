@@ -1,8 +1,8 @@
 <div *ngIf="items?.length > 0; else noItem" >
   <ul *ngFor="let item of items">
     <li>
-        <button (click)= "deleteItem(item)">delete record</button>
       <b>
+        <br>
       {{item.fName}}
       {{item.lName}}
       </b>
@@ -18,6 +18,46 @@
       Tapasztalat: {{item.yearsOfExperience}} év
       <br>
       id: {{item.id}}
+      <br>
+      <button (click)= "editItem(item)">edit record</button>
+      <div *ngIf="editState && itemToEdit.id == item.id" >
+          <form (ngSubmit)="updateItem(item)">
+              <div>
+                  First Name
+                  <input type="text" placeholder="First Name" [(ngModel)]='item.fName' name='fName' >
+                </div>
+                <div>
+                    Last Name
+                  <input type="text" placeholder="Last Name" [(ngModel)]='item.lName' name='lName' >
+                </div>
+                <div>
+                  Age
+                    <input type="text" placeholder="Age" [(ngModel)]='item.age' name='age' >
+                  </div>
+
+                <div>
+                  Email
+                  <input type="text" placeholder="email address" [(ngModel)]='item.email' name='email'>
+                </div>
+                <div>
+                  Gender
+                  <input type="text" placeholder="Gender" [(ngModel)]='item.gender' name="gender">
+                </div>
+                <div>
+                  Is full time?
+                  <input type="text" placeholder="isFullTime" [(ngModel)]='item.isFullTime' name="isFullTime">
+                </div>
+                <div>
+                  Years of experience
+                    <input type="text" placeholder="years Of Experience (number)" [(ngModel)]='item.yearsOfExperience'
+                    name="yearsOfExperience">
+                </div>
+                <button (click)= "deleteItem(item)">delete record</button>
+                <div>
+                  <input type="submit" value="Update">
+                </div>
+          </form>
+      </div>
 
     </li>
   </ul>

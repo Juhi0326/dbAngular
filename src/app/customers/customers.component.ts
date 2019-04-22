@@ -11,6 +11,8 @@ import { CustModell } from './../cust-modell';
 export class CustomersComponent implements OnInit {
   title = 'Angular with FireBase';
   items: CustModell[];
+  editState = false;
+  itemToEdit: CustModell;
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
@@ -21,7 +23,10 @@ export class CustomersComponent implements OnInit {
 
   deleteItem(item: CustModell) {
     this.customerService.deleteCustomer(item);
-
+  }
+  editItem(item: CustModell) {
+    this.editState = true;
+    this.itemToEdit = item;
   }
 
 }
