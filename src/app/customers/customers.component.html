@@ -20,8 +20,8 @@
       id: {{item.id}}
       <br>
       <a href="#" class="secondary-content">
-        <i (click)= "editItem(item)" class="fas fa-pencil-alt"></i>
-        <i *ngIf="editState" (click)= "clearState(item)" class="fas fa-reply"></i>
+        <i (click)= "editItem(item)" class="fas fa-pencil-alt nagyit"></i>
+        <i *ngIf="editState" (click)= "clearState(item)" class="fas fa-reply nagyit"></i>
 
       </a>
       <div *ngIf="editState && itemToEdit.id == item.id" >
