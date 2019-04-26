@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { CustModell } from './../cust-modell';
-import { map } from 'rxjs/operators';
+import { map, find } from 'rxjs/operators';
 
 
 
@@ -13,6 +13,7 @@ export class CustomerService {
   items: Observable<CustModell[]>;
   itemsCollection: AngularFirestoreCollection<CustModell>;
   itemDoc: AngularFirestoreDocument<CustModell>;
+  customer: Observable<CustModell>;
 
 
   constructor(private db: AngularFirestore) {
@@ -31,7 +32,18 @@ export class CustomerService {
     return this.items;
   }
   GetCustomerById(id: string): Observable<CustModell> {
-    return of(this.items.find(cust => cust.id === id));
+    this.itemDoc = this.db.doc(`proba/${id}`);
+    this.customer = this.itemDoc.snapshotChanges().pipe(map(action => {
+      if (!action.payload.exists) {
+        return null;
+      } else {
+        const data = action.payload.data() as CustModell;
+        data.id = action.payload.id;
+        return data;
+      }
+    }));
+    return this.customer;
+
 
   }
   addCustomer(item: CustModell) {

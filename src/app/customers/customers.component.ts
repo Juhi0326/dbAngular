@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './../Services/customer.service';
 import { CustModell } from './../cust-modell';
+import {
+  Router, Resolve,
+  RouterStateSnapshot,
+  ActivatedRouteSnapshot
+} from '@angular/router';
 
 
 @Component({
@@ -13,7 +18,7 @@ export class CustomersComponent implements OnInit {
   items: CustModell[];
   editState = false;
   itemToEdit: CustModell;
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private router: Router) { }
 
   ngOnInit() {
     this.customerService.getCustomers().subscribe(items => {
@@ -21,4 +26,7 @@ export class CustomersComponent implements OnInit {
     });
   }
 
+  navigate(id: string) {
+    this.router.navigate([`/customer-details/${id}`]);
+  }
 }

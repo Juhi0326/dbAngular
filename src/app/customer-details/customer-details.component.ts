@@ -18,10 +18,10 @@ export class CustomerDetailsComponent implements OnInit {
   constructor(
     private customerService: CustomerService,
     private route: ActivatedRoute) {
+      console.log(this.route.snapshot.paramMap.get('id'));
     const id = this.route.snapshot.paramMap.get('id');
     this.customerService.GetCustomerById(id)
       .subscribe(res => this.customerDetails = res);
-    console.log(id);
   }
 
   ngOnInit() {

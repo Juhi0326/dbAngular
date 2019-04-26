@@ -9,7 +9,7 @@
       <tr *ngFor="let item of items">
         <td>{{item.fName}} {{item.lName}}</td>
         <td>{{item.id}}</td>
-        <td><a routerLink='customer-details/{{item.id}}'>
+        <td><a (click)="navigate(item.id)" >
           <i class="fas fa-pencil-alt nagyit"></i>
         </a></td>
       </tr>
