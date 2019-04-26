@@ -10,16 +10,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CustomerDetailsComponent implements OnInit {
 
-  items: CustModell[];
+  customerDetails: CustModell;
+
   editState = false;
   itemToEdit: CustModell;
 
   constructor(
     private customerService: CustomerService,
     private route: ActivatedRoute) {
-      const id = this.route.snapshot.paramMap.get('id');
-      console.log(id);
-     }
+    const id = this.route.snapshot.paramMap.get('id');
+    this.customerService.GetCustomerById(id)
+      .subscribe(res => this.customerDetails = res);
+    console.log(id);
+  }
 
   ngOnInit() {
   }
