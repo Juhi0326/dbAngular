@@ -11,13 +11,15 @@ import { environment } from '../environments/environment';
 import { CustomerService } from './Services/customer.service';
 import { AddItemComponent } from './add-item/add-item.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
     AddItemComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    NavBarComponent
   ],
   imports: [
 
