@@ -13,6 +13,7 @@ import { AddItemComponent } from './add-item/add-item.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AppRoutingModule
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]
