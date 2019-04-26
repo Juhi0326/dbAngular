@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CustModell } from './../cust-modell';
 import { map } from 'rxjs/operators';
 
@@ -30,16 +30,20 @@ export class CustomerService {
   getCustomers() {
     return this.items;
   }
+  GetCustomerById(id: string): Observable<CustModell> {
+    return of(this.items.find(cust => cust.id === id));
+
+  }
   addCustomer(item: CustModell) {
     this.itemsCollection.add(item);
   }
   deleteCustomer(item: CustModell) {
     this.itemDoc = this.db.doc(`proba/${item.id}`);
-    this.itemDoc.delete().then(function() {
+    this.itemDoc.delete().then(function () {
       console.log('Document successfully deleted!');
-        }).catch(function(error) {
+    }).catch(function (error) {
       console.error('Error removing document: ', error);
-        });
+    });
   }
 
   updateCustomer(item: CustModell) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './../Services/customer.service';
 import { CustModell } from './../cust-modell';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer-details',
@@ -8,12 +9,17 @@ import { CustModell } from './../cust-modell';
   styleUrls: ['./customer-details.component.css']
 })
 export class CustomerDetailsComponent implements OnInit {
-  title = 'Customers';
+
   items: CustModell[];
   editState = false;
   itemToEdit: CustModell;
 
-  constructor(private customerService: CustomerService) { }
+  constructor(
+    private customerService: CustomerService,
+    private route: ActivatedRoute) {
+      const id = this.route.snapshot.paramMap.get('id');
+      console.log(id);
+     }
 
   ngOnInit() {
   }

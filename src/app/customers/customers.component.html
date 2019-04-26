@@ -9,7 +9,9 @@
       <tr *ngFor="let item of items">
         <td>{{item.fName}} {{item.lName}}</td>
         <td>{{item.id}}</td>
-        <td><i (click)= "editItem(item)" class="fas fa-pencil-alt nagyit"></i></td>
+        <td><a routerLink='customer-details/{{item.id}}'>
+          <i class="fas fa-pencil-alt nagyit"></i>
+        </a></td>
       </tr>
     </tbody>
 

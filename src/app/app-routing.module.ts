@@ -7,7 +7,7 @@ import { AddItemComponent } from './add-item/add-item.component';
 const routes: Routes = [
   { path: '',  redirectTo: 'customers', pathMatch: 'full'},
   { path: 'customers', component: CustomersComponent },
-  { path: 'customer-details', component: CustomerDetailsComponent },
+  { path: 'customer-details/:id', component: CustomerDetailsComponent },
   { path: 'new-customer', component: AddItemComponent },
 
 ];
