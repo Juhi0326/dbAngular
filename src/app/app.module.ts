@@ -15,13 +15,15 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
     AddItemComponent,
     CustomerDetailsComponent,
-    NavBarComponent
+    NavBarComponent,
+
   ],
   imports: [
 
