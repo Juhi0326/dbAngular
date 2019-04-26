@@ -9,7 +9,7 @@ import { CustModell } from './../cust-modell';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-  title = 'Customer admin';
+  title = 'Customers';
   items: CustModell[];
   editState = false;
   itemToEdit: CustModell;
@@ -19,25 +19,6 @@ export class CustomersComponent implements OnInit {
     this.customerService.getCustomers().subscribe(items => {
       this.items = items;
     });
-  }
-
-  deleteItem(item: CustModell) {
-    this.customerService.deleteCustomer(item);
-    this.clearState();
-  }
-  editItem(item: CustModell) {
-    this.editState = true;
-    this.itemToEdit = item;
-  }
-  updateItem(item: CustModell) {
-    this.customerService.updateCustomer(item);
-    this.clearState();
-  }
-
-  clearState() {
-    this.editState = false;
-    this.itemToEdit = null;
-
   }
 
 }

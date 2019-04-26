@@ -10,12 +10,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { CustomerService } from './Services/customer.service';
 import { AddItemComponent } from './add-item/add-item.component';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
-    AddItemComponent
+    AddItemComponent,
+    CustomerDetailsComponent
   ],
   imports: [
 
