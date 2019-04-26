@@ -12,6 +12,7 @@ import { CustomerService } from './Services/customer.service';
 import { AddItemComponent } from './add-item/add-item.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 
     BrowserModule,
     FormsModule,
+    NgbModule,
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
     AngularFirestoreModule,
     AngularFireAuthModule,
