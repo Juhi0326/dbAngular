@@ -29,4 +29,10 @@ export class CustomersComponent implements OnInit {
   navigate(id: string) {
     this.router.navigate([`/customer-details/${id}`]);
   }
+
+  refresh() {
+    this.customerService.getCustomers().subscribe(items => {
+      this.items = items;
+    });
+  }
 }

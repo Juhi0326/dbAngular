@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './../Services/customer.service';
 import { CustModell } from './../cust-modell';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-customer-details',
@@ -17,7 +19,8 @@ export class CustomerDetailsComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private location: Location) {
       console.log(this.route.snapshot.paramMap.get('id'));
     const id = this.route.snapshot.paramMap.get('id');
     this.customerService.GetCustomerById(id)
@@ -25,6 +28,11 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  goBack(): void {
+    this.location.back();
+
   }
 
   deleteItem(item: CustModell) {
