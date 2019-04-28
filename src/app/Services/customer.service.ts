@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { CustModell } from './../cust-modell';
-import { map, find } from 'rxjs/operators';
+import { map, find, publishReplay, refCount } from 'rxjs/operators';
 
 
 
@@ -26,7 +26,7 @@ export class CustomerService {
         const id = a.payload.doc.id;
         return { id, ...data };
       }))
-    );
+    ).pipe(publishReplay(1)).pipe(refCount());
   }
   getCustomers() {
     return this.items;

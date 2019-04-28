@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-customer-details',
   templateUrl: './customer-details.component.html',
@@ -29,10 +30,8 @@ export class CustomerDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
-
   goBack(): void {
     this.location.back();
-
   }
 
   deleteItem(item: CustModell) {
