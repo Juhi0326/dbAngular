@@ -38,6 +38,7 @@ export class CustomerDetailsComponent implements OnInit {
   deleteItem(item: CustModell) {
     this.customerService.deleteCustomer(item);
     this.clearState();
+    this.goBack();
   }
   editItem(item: CustModell) {
     this.editState = true;

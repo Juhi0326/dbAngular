@@ -3,5 +3,6 @@ a{
 }
 
 .active, a:hover{
-  color: rgb(208, 248, 27);
+  color: rgb(176, 187, 128);
+
 }

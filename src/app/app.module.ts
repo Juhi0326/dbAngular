@@ -14,6 +14,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
     AddItemComponent,
     CustomerDetailsComponent,
     NavBarComponent,
+    PageNotFoundComponent,
 
   ],
   imports: [
