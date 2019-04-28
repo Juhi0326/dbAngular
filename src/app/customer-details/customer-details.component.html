@@ -1,9 +1,62 @@
-<div *ngIf="customerDetails" >
-  <h1>
-  {{customerDetails.fName}}
-  {{customerDetails.lName}}
-</h1>
+<div *ngIf="customerDetails">
+  <div class="jumbotron">
+    <h1 class="display-4">
+      {{customerDetails.fName}}
+      {{customerDetails.lName}}
+    </h1>
+    <p class="lead">email address: {{customerDetails.email}}</p>
+    <hr class="my-4">
+    <p>gender: {{customerDetails.gender}}</p>
+    <p>job experience: {{customerDetails.yearsOfExperience}} year(s)</p>
+    <button (click)="editItem(customerDetails)" class="btn btn-primary">edit data</button>
+
+
+  </div>
+
+  <div *ngIf="editState && itemToEdit.id == customerDetails.id" >
+    <form (ngSubmit)="updateItem(item)" class="form-group">
+        <div>
+
+            <label for="First Name">First name</label>
+            <input type="text" class="form-control" id="First Name" placeholder="First Name" [(ngModel)]='customerDetails.fName'
+              name='fName'>
+          </div>
+          <div>
+            <label for="Last Name">Last name</label>
+            <input type="text" class="form-control" id="Last Name" placeholder="Last Name" [(ngModel)]='customerDetails.lName'
+              name='lName'>
+          </div>
+          <div>
+            <label for="Age">Age</label>
+            <input type="text" class="form-control" id="Age" placeholder="Age" [(ngModel)]='customerDetails.age' name='age'>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="email address" [(ngModel)]='customerDetails.email'
+              name='email'>
+          </div>
+          <div>
+            <label for="gender">Gender</label>
+            <input type="text" class="form-control" id="gender" placeholder="Gender" [(ngModel)]='customerDetails.gender' name="gender">
+          </div>
+          <div>
+              <label for="fullTime">Full Time</label>
+              <input type="text" class="form-control" id="fullTime" placeholder="isFullTime" [(ngModel)]='customerDetails.isFullTime' name="isFullTime">
+          </div>
+          <div>
+
+            <label for="years Of Experience">Years Of Experience</label>
+
+            <input type="text" class="form-control" id="years Of Experience" placeholder="years Of Experience (number)" [(ngModel)]='customerDetails.yearsOfExperience'
+              name="yearsOfExperience">
+          </div>
+          <br>
+          <button (click)= "updateItem(customerDetails)" class="btn btn-warning">Update record</button>
+          <button (click)= "deleteItem(customerDetails)" class="btn btn-danger">Delete record</button>
+    </form>
+</div>
+
 
 <button (click)="goBack()" class="btn btn-primary">go back</button>
 </div>
-

@@ -30,6 +30,7 @@ export class CustomerDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
+
   goBack(): void {
     this.location.back();
   }
@@ -41,6 +42,7 @@ export class CustomerDetailsComponent implements OnInit {
   editItem(item: CustModell) {
     this.editState = true;
     this.itemToEdit = item;
+    console.log(item);
   }
   updateItem(item: CustModell) {
     this.customerService.updateCustomer(item);

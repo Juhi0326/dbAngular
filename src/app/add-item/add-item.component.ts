@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './../Services/customer.service';
 import { CustModell } from './../cust-modell';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-item',
@@ -18,7 +19,7 @@ export class AddItemComponent implements OnInit {
     yearsOfExperience: 0
   };
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private location: Location) { }
 
   ngOnInit() {
   }
@@ -38,6 +39,10 @@ export class AddItemComponent implements OnInit {
     } else {
       console.log('valami nem oké');
     }
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

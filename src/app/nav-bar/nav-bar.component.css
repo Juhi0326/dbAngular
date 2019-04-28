@@ -1,3 +1,7 @@
 a{
   color: aliceblue;
 }
+
+.active, a:hover{
+  color: rgb(208, 248, 27);
+}
