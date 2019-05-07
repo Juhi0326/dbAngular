@@ -8,8 +8,8 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '',  redirectTo: 'customers', pathMatch: 'full'},
-  { path: 'login', component: CustomersComponent },
-  { path: 'customers', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'customers', component: CustomersComponent },
   { path: 'customer-details/:id', component: CustomerDetailsComponent },
   { path: 'new-customer', component: AddItemComponent },
   { path: '**', component: PageNotFoundComponent }

@@ -15,19 +15,8 @@ export class AuthService {
 
   login(userName: string, password: string): void {
     if (!userName || !password) {
-      return;
+      userName: userName;
     }
-    if (userName === 'admin') {
-      this.currentUser = {
-        id: 1,
-        userName: userName,
-      };
-      return;
-    }
-    this.currentUser = {
-      id: 2,
-      userName: userName,
-    };
   }
 
   logout(): void {
