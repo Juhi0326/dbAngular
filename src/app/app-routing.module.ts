@@ -4,10 +4,12 @@ import { CustomersComponent } from './customers/customers.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '',  redirectTo: 'customers', pathMatch: 'full'},
-  { path: 'customers', component: CustomersComponent },
+  { path: 'login', component: CustomersComponent },
+  { path: 'customers', component: LoginComponent },
   { path: 'customer-details/:id', component: CustomerDetailsComponent },
   { path: 'new-customer', component: AddItemComponent },
   { path: '**', component: PageNotFoundComponent }
@@ -16,8 +18,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
-
-
 
 exports: [ RouterModule ]
 })
