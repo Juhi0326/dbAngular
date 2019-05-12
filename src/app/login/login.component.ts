@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../Services/auth.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   myForm = this.fb.group({
-    userName: [''],
-    password: ['']
+    userName: ['', Validators.required],
+    password: ['', Validators.required]
   });
 
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
@@ -25,7 +26,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
     this.authService.login(`${this.myForm.value.userName}`, `${this.myForm.value.password}`);
     if (this.authService.redirectURL) {
       this.router.navigateByUrl(this.authService.redirectURL);
