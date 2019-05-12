@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CustomersComponent } from './customers/customers.component';
 import { AngularFireModule } from '@angular/fire';
@@ -32,6 +32,7 @@ import { LoginComponent } from './login/login.component';
   imports: [
 
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
