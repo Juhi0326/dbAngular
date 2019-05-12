@@ -9,7 +9,17 @@
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/new-customer']">Add New Customer <span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item active" *ngIf="!isLoggedIn();">
+            <a class="nav-link" [routerLink]="['/new-customer']">Login <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active" *ngIf="isLoggedIn();">
+            <a class="nav-link" [routerLink]="['/new-customer']"
+            (click)="logOut()"
+            >Logout <span class="sr-only">(current)</span></a>
+        </li>
 
       </ul>
     </div>
   </nav>
+
+
