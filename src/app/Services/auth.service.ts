@@ -6,6 +6,7 @@ import { User } from '../cust-modell';
 })
 export class AuthService {
   currentUser: User;
+  redirectURL: string;
 
   get isLoggedIn(): boolean {
     console.log(this.currentUser);

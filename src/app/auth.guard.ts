@@ -8,20 +8,21 @@ import { AuthService } from './Services/auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-constructor(
-  private authService: AuthService,
-  private router: Router) {
-}
+  constructor(
+    private authService: AuthService,
+    private router: Router) {
+  }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.checkLoggedin();
+    return this.checkLoggedin(state.url);
   }
-  checkLoggedin(): boolean {
+  checkLoggedin(url: string): boolean {
     if (this.authService.isLoggedIn) {
       console.log('belogoltam');
       return true;
     }
+    this.authService.redirectURL = url;
     this.router.navigate(['login']);
     console.log('nem sikerült');
     return false;
