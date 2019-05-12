@@ -19,9 +19,11 @@ constructor(
   }
   checkLoggedin(): boolean {
     if (this.authService.isLoggedIn) {
+      console.log('belogoltam');
       return true;
     }
     this.router.navigate(['login']);
+    console.log('nem sikerült');
     return false;
   }
 }
