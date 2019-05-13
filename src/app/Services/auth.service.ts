@@ -9,7 +9,7 @@ export class AuthService {
   redirectURL: string;
 
   get isLoggedIn(): boolean {
-    console.log(this.currentUser);
+
     return !!this.currentUser;
 
   }
@@ -22,7 +22,6 @@ export class AuthService {
         password: password
       };
     }
-    console.log(userName, password);
   }
 
   logout(): void {
