@@ -13,7 +13,6 @@ export class AuthService {
     return !!this.currentUser;
 
   }
-  constructor() { }
 
   login(userName: string, password: string): void {
     if (userName || password) {
