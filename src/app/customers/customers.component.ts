@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
 export class CustomersComponent implements OnInit {
   title = 'Customers';
   items: CustModell[];
+  searchText: string;
   editState = false;
   itemToEdit: CustModell;
   constructor(
