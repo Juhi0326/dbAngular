@@ -22,7 +22,7 @@ export class CustomerDetailsComponent implements OnInit {
     private customerService: CustomerService,
     private route: ActivatedRoute,
     private router: Router) {
-      console.log(this.route.snapshot.paramMap.get('id'));
+    console.log(this.route.snapshot.paramMap.get('id'));
     const id = this.route.snapshot.paramMap.get('id');
     this.customerService.GetCustomerById(id)
       .subscribe(res => this.customerDetails = res);
@@ -33,7 +33,7 @@ export class CustomerDetailsComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate([`/customers`],
-    {queryParamsHandling: 'preserve'});
+      { queryParamsHandling: 'preserve' });
   }
 
   deleteItem(item: CustModell) {
