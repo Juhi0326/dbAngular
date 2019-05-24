@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './../Services/customer.service';
 import { CustModell } from './../cust-modell';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 
@@ -19,9 +19,12 @@ export class CustomersComponent implements OnInit {
   constructor(
     private customerService: CustomerService,
     private router: Router,
+    private route: ActivatedRoute,
     private location: Location) { }
 
   ngOnInit() {
+    this.searchText = this.route.snapshot.queryParamMap.get('filterBy') || '';
+
     this.customerService.getCustomers().subscribe(items => {
       this.items = items;
     });
@@ -32,7 +35,11 @@ export class CustomersComponent implements OnInit {
   }
 
   navigate(id: string) {
-    this.router.navigate([`/customer-details/${id}`]);
+    this.router.navigate([`/customer-details/${id}`],
+      {
+        queryParams: { filterBy: this.searchText }
+      }
+    );
   }
 
   refresh() {
