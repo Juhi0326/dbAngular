@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'new-customer', component: AddItemComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 
-]
+];
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBTnbNggW8LbUi5i3uerlB9e3btPo35uYE",
-    authDomain: "proba-6157e.firebaseapp.com",
-    databaseURL: "https://proba-6157e.firebaseio.com",
-    projectId: "proba-6157e",
-    storageBucket: "proba-6157e.appspot.com",
-    messagingSenderId: "412002633454"
+    apiKey: 'AIzaSyBTnbNggW8LbUi5i3uerlB9e3btPo35uYE',
+    authDomain: 'proba-6157e.firebaseapp.com',
+    databaseURL: 'https://proba-6157e.firebaseio.com',
+    projectId: 'proba-6157e',
+    storageBucket: 'proba-6157e.appspot.com',
+    messagingSenderId: '412002633454'
   }
 };
 
