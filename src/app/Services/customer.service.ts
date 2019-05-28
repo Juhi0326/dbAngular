@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CustModell } from './../cust-modell';
-import { map } from 'rxjs/operators';
+import { map, find, publishReplay, refCount } from 'rxjs/operators';
+
 
 
 
@@ -13,6 +14,7 @@ export class CustomerService {
   items: Observable<CustModell[]>;
   itemsCollection: AngularFirestoreCollection<CustModell>;
   itemDoc: AngularFirestoreDocument<CustModell>;
+  customer: Observable<CustModell>;
 
 
   constructor(private db: AngularFirestore) {
@@ -25,26 +27,43 @@ export class CustomerService {
         const id = a.payload.doc.id;
         return { id, ...data };
       }))
-    );
+    ).pipe(publishReplay(1)).pipe(refCount());
   }
   getCustomers() {
     return this.items;
+  }
+  GetCustomerById(id: string): Observable<CustModell> {
+    this.itemDoc = this.db.doc(`proba/${id}`);
+    this.customer = this.itemDoc.snapshotChanges().pipe(map(action => {
+      if (!action.payload.exists) {
+        return null;
+      } else {
+        const data = action.payload.data() as CustModell;
+        data.id = action.payload.id;
+        return data;
+      }
+    }));
+    return this.customer;
+
+
   }
   addCustomer(item: CustModell) {
     this.itemsCollection.add(item);
   }
   deleteCustomer(item: CustModell) {
     this.itemDoc = this.db.doc(`proba/${item.id}`);
-    this.itemDoc.delete().then(function() {
+    this.itemDoc.delete().then(function () {
       console.log('Document successfully deleted!');
-        }).catch(function(error) {
+    }).catch(function (error) {
       console.error('Error removing document: ', error);
-        });
+    });
   }
 
   updateCustomer(item: CustModell) {
     this.itemDoc = this.db.doc(`proba/${item.id}`);
     this.itemDoc.update(item);
   }
+
+
 
 }

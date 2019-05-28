@@ -1,78 +1,28 @@
-<div *ngIf="items?.length > 0; else noItem" >
-  <ul *ngFor="let item of items" class="list-group">
-    <li class="list-group-item" >
-      <b>
-        <br>
-      {{item.fName}}
-      {{item.lName}}
-      </b>
-      <br>
-      {{item.age}} éves
-      <br>
-      email cím: {{item.email}}
-      <br>
-      gender: {{item.gender}}
-      <br>
-      Full time: {{item.isFullTime}}
-      <br>
-      Tapasztalat: {{item.yearsOfExperience}} év
-      <br>
-      id: {{item.id}}
-      <br>
-      <a href="#" class="secondary-content">
-        <i (click)= "editItem(item)" class="fas fa-pencil-alt nagyit"></i>
-        <i *ngIf="editState" (click)= "clearState(item)" class="fas fa-reply nagyit"></i>
-
-      </a>
-      <div *ngIf="editState && itemToEdit.id == item.id" >
-          <form (ngSubmit)="updateItem(item)" class="form-group">
-              <div>
-
-                  <label for="First Name">First name</label>
-                  <input type="text" class="form-control" id="First Name" placeholder="First Name" [(ngModel)]='item.fName'
-                    name='fName'>
-                </div>
-                <div>
-                  <label for="Last Name">Last name</label>
-                  <input type="text" class="form-control" id="Last Name" placeholder="Last Name" [(ngModel)]='item.lName'
-                    name='lName'>
-                </div>
-                <div>
-                  <label for="Age">Age</label>
-                  <input type="text" class="form-control" id="Age" placeholder="Age" [(ngModel)]='item.age' name='age'>
-                </div>
-
-                <div>
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="email address" [(ngModel)]='item.email'
-                    name='email'>
-                </div>
-                <div>
-                  <label for="gender">Gender</label>
-                  <input type="text" class="form-control" id="gender" placeholder="Gender" [(ngModel)]='item.gender' name="gender">
-                </div>
-                <div>
-                    <label for="fullTime">Full Time</label>
-                    <input type="text" class="form-control" id="fullTime" placeholder="isFullTime" [(ngModel)]='item.isFullTime' name="isFullTime">
-                </div>
-                <div>
-
-                  <label for="years Of Experience">Years Of Experience</label>
-
-                  <input type="text" class="form-control" id="years Of Experience" placeholder="years Of Experience (number)" [(ngModel)]='item.yearsOfExperience'
-                    name="yearsOfExperience">
-                </div>
-                <br>
-                <button (click)= "updateItem(item)" class="btn btn-warning">Update record</button>
-                <button (click)= "deleteItem(item)" class="btn btn-danger">Delete record</button>
-          </form>
-      </div>
-
-    </li>
-  </ul>
+<div id="search">
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+    placeholder="Searching customers">
 </div>
+<br>
+<br>
 
-<ng-template #noItem>
-  <hr>
-  <h4>There is no item in the list</h4>
-</ng-template>
+<div *ngIf="items?.length > 0; else noItem" id="table">
+  <table id="customers">
+    <thead>
+      <th>Full name</th>
+      <th>Edit</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items | filter:searchText">
+        <td>{{item.fName}} {{item.lName}}</td>
+        <td><a (click)="navigate(item.id)">
+            <i class="fas fa-pencil-alt nagyit"></i>
+          </a></td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <ng-template #noItem>
+    <hr>
+    <h4>There is no item in the list</h4>
+  </ng-template>

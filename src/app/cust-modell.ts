@@ -9,3 +9,9 @@ export class CustModell {
   yearsOfExperience: Number;
 
 }
+
+export interface User {
+  userName: String;
+  password?: String;
+  id?: Number;
+}
