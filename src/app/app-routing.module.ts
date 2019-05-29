@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
-import { CustomersComponent } from './customers/customers.component';
-import { CustomerDetailsComponent } from './customer-details/customer-details.component';
-import { AddItemComponent } from './add-item/add-item.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LoginComponent } from './login/login.component';
+import { CustomersComponent } from './customers/customers/customers.component';
+import { CustomerDetailsComponent } from './customers/customer-details/customer-details.component';
+import { AddItemComponent } from './customers/add-item/add-item.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { LoginComponent } from './users/login/login.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -19,6 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
+
 
 exports: [ RouterModule ]
 })

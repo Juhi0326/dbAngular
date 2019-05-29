@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from './../Services/customer.service';
 import { CustModell } from './../cust-modell';
 import { Location } from '@angular/common';
+import { CustomerService } from './../customer.service';
 
 @Component({
   selector: 'app-add-item',

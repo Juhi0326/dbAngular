@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from './../Services/customer.service';
-import { CustModell } from './../cust-modell';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { CustomerService } from './../customer.service';
+import { CustModell } from './../cust-modell';
 
 
 
