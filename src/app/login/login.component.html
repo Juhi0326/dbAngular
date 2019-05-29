@@ -4,30 +4,23 @@
     <label for="staticEmail" class="col-sm-6 col-form-label">Username</label>
     <div class="col-sm-10">
       <input type="text" formControlName="userName" id="staticEmail" class="form-control"
-      placeholder="Username" required>
+        placeholder="Username (3-20 characters)" required>
     </div>
   </div>
-
-    <div *ngIf="myForm.hasError('required', [userName])" >
-      this field is required
-    </div>
-    <div *ngIf="myForm.hasError('minlenght', [userName])" >
-        please enter at least 3 characters!
-      </div>
-      <div *ngIf="myForm.hasError('maxlenght', [userName])" >
-          please enter no more 20 characters!
-        </div>
-
 
   <div class="form-group row">
     <label for="inputPassword" class="col-sm-6 col-form-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password"
-      formControlName="password" required>
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password (5-8 characters)"
+        formControlName="password" required>
+    </div>
+  </div>
+
+  <div *ngIf="myForm.value.userName!=='' && myForm.value.password!==''">
+    <div *ngIf="myForm.invalid" class="alert alert-danger" role="alert">
+      username must have 3-20 characters, password must have 5-8 characters
     </div>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-
