@@ -19,7 +19,8 @@ import { LoginComponent } from './users/login/login.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomersModule } from './customers/customers.module';
-
+import { UsersModule } from './users/users.module';
+import { AuthService } from './users/login/auth.service';
 
 @NgModule({
   declarations: [
@@ -43,11 +44,13 @@ import { CustomersModule } from './customers/customers.module';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AppRoutingModule,
     Ng2SearchPipeModule,
-    CustomersModule
+    CustomersModule,
+    UsersModule,
+    AppRoutingModule
+
   ],
-  providers: [CustomerService],
+  providers: [CustomerService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
