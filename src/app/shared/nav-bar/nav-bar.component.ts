@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../users/login/auth.service';
+import { Router } from '@angular/router';
 
 
 
@@ -12,7 +13,7 @@ export class NavBarComponent implements OnInit {
 
 
 
-  constructor(private authSevice: AuthService) { }
+  constructor(private authSevice: AuthService, private router: Router) { }
 
   ngOnInit() {
 
