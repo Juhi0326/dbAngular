@@ -53,7 +53,6 @@ export class CustomerService {
   deleteCustomer(item: CustModell) {
     this.itemDoc = this.db.doc(`proba/${item.id}`);
     this.itemDoc.delete().then(function () {
-      console.log('Document successfully deleted!');
     }).catch(function (error) {
       console.error('Error removing document: ', error);
     });

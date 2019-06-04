@@ -37,8 +37,6 @@ export class AddItemComponent implements OnInit {
       this.item.isFullTime = false;
       this.item.yearsOfExperience = 0;
       this.goBack();
-    } else {
-      console.log('valami nem oké');
     }
   }
 
