@@ -4,16 +4,25 @@ import { CustomersComponent } from './customers/customers.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { AuthGuard } from '../auth.guard';
 import { AddItemComponent } from './add-item/add-item.component';
+import { CutomersMainLayerComponent } from './cutomers-main-layer/cutomers-main-layer.component';
+import { from } from 'rxjs';
 
 const routes: Routes = [
-  { path: 'customers', component: CustomersComponent },
-  { path: 'customer-details/:id', component: CustomerDetailsComponent, canActivate: [AuthGuard] },
-  { path: 'new-customer', component: AddItemComponent, canActivate: [AuthGuard] },
+  {
+    path: 'customers', component: CutomersMainLayerComponent, canActivate: [AuthGuard],
+    children: [
+      { path: '', component: CustomersComponent },
+      { path: 'customers', component: CustomersComponent },
+      { path: 'customer-details/:id', component: CustomerDetailsComponent },
+      { path: 'new-customer', component: AddItemComponent },
+    ]
+  },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class CustomersRoutingModule { }
 
