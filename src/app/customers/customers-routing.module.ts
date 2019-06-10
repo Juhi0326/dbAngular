@@ -4,15 +4,13 @@ import { CustomersComponent } from './customers/customers.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { AuthGuard } from '../auth.guard';
 import { AddItemComponent } from './add-item/add-item.component';
-import { CutomersMainLayerComponent } from './cutomers-main-layer/cutomers-main-layer.component';
 import { CustomerResolverService} from './customer-resolver.service';
 
 const routes: Routes = [
   {
-    path: 'customers', component: CutomersMainLayerComponent, canActivate: [AuthGuard],
+    path: 'customers', canActivate: [AuthGuard],
     children: [
       { path: '', component: CustomersComponent },
-      { path: 'customers', component: CustomersComponent },
       { path: 'customer-details/:id',
       component: CustomerDetailsComponent,
       resolve: { customer: CustomerResolverService}
@@ -20,7 +18,6 @@ const routes: Routes = [
       { path: 'new-customer', component: AddItemComponent },
     ]
   },
-
 ];
 
 @NgModule({
