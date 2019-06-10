@@ -5,7 +5,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 import { AuthGuard } from '../auth.guard';
 import { AddItemComponent } from './add-item/add-item.component';
 import { CutomersMainLayerComponent } from './cutomers-main-layer/cutomers-main-layer.component';
-import { from } from 'rxjs';
+import { CustomerResolverService} from './customer-resolver.service';
 
 const routes: Routes = [
   {
@@ -13,7 +13,10 @@ const routes: Routes = [
     children: [
       { path: '', component: CustomersComponent },
       { path: 'customers', component: CustomersComponent },
-      { path: 'customer-details/:id', component: CustomerDetailsComponent },
+      { path: 'customer-details/:id',
+      component: CustomerDetailsComponent,
+      resolve: { customer: CustomerResolverService}
+     },
       { path: 'new-customer', component: AddItemComponent },
     ]
   },

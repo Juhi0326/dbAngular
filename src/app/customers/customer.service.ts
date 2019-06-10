@@ -5,8 +5,6 @@ import { map, publishReplay, refCount } from 'rxjs/operators';
 import { CustModell } from './cust-modell';
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
