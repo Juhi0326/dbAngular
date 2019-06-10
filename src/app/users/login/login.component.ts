@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       if (this.authService.redirectURL) {
         this.router.navigateByUrl(this.authService.redirectURL);
       } else {
-        this.router.navigate(['/customers']);
+        this.router.navigate(['']);
       }
 
     }

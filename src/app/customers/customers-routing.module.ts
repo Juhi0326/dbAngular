@@ -8,7 +8,7 @@ import { CustomerResolverService} from './customer-resolver.service';
 
 const routes: Routes = [
   {
-    path: 'customers', canActivate: [AuthGuard],
+    path: '', canActivate: [AuthGuard],
     children: [
       { path: '', component: CustomersComponent },
       { path: 'customer-details/:id',
