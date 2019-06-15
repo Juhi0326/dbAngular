@@ -1,3 +1,7 @@
+# Database and techniques: 
+  Database: Firestore
+  angular techniques: template driven and reactive forms, ruting modules (forRoot, forChild), NgbModule, BrowserAnimationsModule,
+  data model with interface, services, guard, queryParamsHandling, activatedRoute.
 # DbAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3.
