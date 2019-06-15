@@ -5,8 +5,6 @@ import { map, publishReplay, refCount } from 'rxjs/operators';
 import { CustModell } from './cust-modell';
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -53,7 +51,6 @@ export class CustomerService {
   deleteCustomer(item: CustModell) {
     this.itemDoc = this.db.doc(`proba/${item.id}`);
     this.itemDoc.delete().then(function () {
-      console.log('Document successfully deleted!');
     }).catch(function (error) {
       console.error('Error removing document: ', error);
     });

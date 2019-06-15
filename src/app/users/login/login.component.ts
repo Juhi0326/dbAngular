@@ -23,20 +23,18 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.warn(this.myForm.value);
     this.login();
   }
 
   login() {
     if (this.myForm.invalid) {
-      console.log(this.myForm.status);
       return;
     } else {
       this.authService.login(`${this.myForm.value.userName}`, `${this.myForm.value.password}`);
       if (this.authService.redirectURL) {
         this.router.navigateByUrl(this.authService.redirectURL);
       } else {
-        this.router.navigate(['/customers']);
+        this.router.navigate(['']);
       }
 
     }

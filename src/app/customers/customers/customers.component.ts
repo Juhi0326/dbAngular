@@ -35,7 +35,7 @@ export class CustomersComponent implements OnInit {
   }
 
   navigate(id: string) {
-    this.router.navigate([`/customer-details/${id}`],
+    this.router.navigate([`customers/customer-details/${id}`],
       {
         queryParams: { filterBy: this.searchText }
       }
