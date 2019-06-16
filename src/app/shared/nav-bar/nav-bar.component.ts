@@ -20,9 +20,9 @@ export class NavBarComponent implements OnInit {
     return this.authSevice.isLoggedIn;
   }
 
-  logout(event: Event) {
+/*   logout(event: Event) {
     event.preventDefault();
     this.authSevice.logout();
-  }
+  } */
 
 }

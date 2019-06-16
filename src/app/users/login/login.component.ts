@@ -22,11 +22,11 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(8)]]
     });
   }
-  onSubmit() {
+  /* onSubmit() {
     this.login();
-  }
+  } */
 
-  login() {
+  /* login() {
     if (this.myForm.invalid) {
       return;
     } else {
@@ -39,5 +39,5 @@ export class LoginComponent implements OnInit {
 
     }
 
-  }
+  }*/
 }

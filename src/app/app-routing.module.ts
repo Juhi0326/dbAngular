@@ -7,7 +7,7 @@ import { AuthGuard } from './auth.guard';
 const routes: Routes = [
   {path: '' , component: HomeComponent },
   { path: 'customers',
-  canLoad: [AuthGuard],
+  canActivate: [AuthGuard],
    loadChildren: './customers/customers.module#CustomersModule'},
   { path: '**', component: PageNotFoundComponent }
 
