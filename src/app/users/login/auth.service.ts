@@ -11,6 +11,7 @@ import { User } from './../User';
 
 export class AuthService {
   userData: any; // Save logged in user data
+  redirectURL: string;
 
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
@@ -38,8 +39,7 @@ export class AuthService {
       .then((result) => {
         console.log(email);
         this.ngZone.run(() => {
-          console.log('bent vagyok!');
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['customers']);
         });
         this.SetUserData(result.user);
       }).catch((error) => {
@@ -95,7 +95,11 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider)
     .then((result) => {
        this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+        if (this.redirectURL) {
+          this.router.navigateByUrl(this.redirectURL);
+        } else {
+          this.router.navigate(['']);
+        }
         });
       this.SetUserData(result.user);
     }).catch((error) => {
@@ -124,7 +128,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.auth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['login']);
     });
   }
 
