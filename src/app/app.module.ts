@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersModule } from './users/users.module';
-import { AuthService } from './users/login/auth.service';
+import { AuthService } from './auth.service';
 import { HomeComponent } from './shared/home/home.component';
 
 @NgModule({
