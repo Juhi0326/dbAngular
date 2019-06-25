@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'customers',
   canActivate: [AuthGuard],
    loadChildren: './customers/customers.module#CustomersModule'},
+   {path: 'login', loadChildren: './users/users.module#UsersModule'},
   { path: '**', component: PageNotFoundComponent }
 
 ];

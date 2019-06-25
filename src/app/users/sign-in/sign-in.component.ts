@@ -18,10 +18,10 @@ export class SignInComponent implements OnInit {
   }
 
   signUp() {
-    this.router.navigate(['register-user']);
+    this.router.navigate(['login/register-user']);
   }
 
   forgotPassword() {
-    this.router.navigate(['forgot-password']);
+    this.router.navigate(['login/forgot-password']);
   }
 }

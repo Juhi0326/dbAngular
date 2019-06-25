@@ -7,10 +7,17 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
-  { path: 'login', component: SignInComponent },
-  { path: 'register-user', component: SignUpComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] }
+  {
+    path: '',
+    children: [
+      {path: '', component: SignInComponent},
+      { path: 'register-user', component: SignUpComponent, canActivate: [SecureInnerPagesGuard] },
+      { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [SecureInnerPagesGuard] },
+      { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] }
+
+    ]
+  }
+
 ];
 
 @NgModule({
