@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CustomersComponent } from './../../customers/customers/customers.component';
 
 @Component({
   selector: 'app-home',
@@ -18,5 +17,11 @@ export class HomeComponent implements OnInit {
 goToCustomers(e: Event) {
   e.preventDefault();
   this.router.navigate(['customers']);
+}
+
+signUp(e: Event){
+  e.preventDefault();
+  console.log('ide eljutottam');
+  this.router.navigate(['login/register-user']);
 }
 }
