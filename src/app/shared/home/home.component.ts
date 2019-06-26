@@ -14,14 +14,13 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-goToCustomers(e: Event) {
-  e.preventDefault();
-  this.router.navigate(['customers']);
-}
+  goToCustomers(e: Event): void {
+    e.preventDefault();
+    this.router.navigate(['customers']);
+  }
 
-signUp(e: Event){
-  e.preventDefault();
-  console.log('ide eljutottam');
-  this.router.navigate(['login/register-user']);
-}
+  signUp(e: Event): void {
+    e.preventDefault();
+    this.router.navigate(['login/register-user']);
+  }
 }
