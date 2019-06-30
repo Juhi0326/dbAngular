@@ -16,10 +16,10 @@
             class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active" *ngIf="!isLoggedIn();">
-        <a class="nav-link" [routerLink]="['customers/new-customer']">Login <span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['customers/new-customer']">Sign in <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active" *ngIf="isLoggedIn();">
-        <a class="nav-link" href="#" (click)="authSevice.signOut()">Logout <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" (click)="authSevice.signOut()">Sign out <span class="sr-only">(current)</span></a>
       </li>
 
     </ul>
