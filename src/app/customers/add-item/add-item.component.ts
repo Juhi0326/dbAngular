@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CustModell } from './../cust-modell';
 import { Location } from '@angular/common';
 import { CustomerService } from './../customer.service';
@@ -8,7 +8,7 @@ import { CustomerService } from './../customer.service';
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
-export class AddItemComponent implements OnInit {
+export class AddItemComponent {
   item: CustModell = {
     age: 0,
     email: '',
@@ -20,9 +20,6 @@ export class AddItemComponent implements OnInit {
   };
 
   constructor(private customerService: CustomerService, private location: Location) { }
-
-  ngOnInit() {
-  }
 
   onSubmit() {
     if (this.item.age > 0 && this.item.email !== '' &&

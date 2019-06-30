@@ -7,15 +7,13 @@ import { Router } from '@angular/router';
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css']
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ForgotPasswordComponent {
 
   constructor(
     public authService: AuthService,
     private router: Router
   ) { }
 
-  ngOnInit() {
-  }
   logIn(): void {
     this.router.navigate(['login']);
   }

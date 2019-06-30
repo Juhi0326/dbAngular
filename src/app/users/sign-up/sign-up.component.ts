@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 
@@ -7,15 +7,13 @@ import { Router } from '@angular/router';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
 
   constructor(
     public authService: AuthService,
     private router: Router
   ) { }
 
-  ngOnInit() {
-  }
 
   logIn(): void {
     this.router.navigate(['login']);
