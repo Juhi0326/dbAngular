@@ -14,16 +14,16 @@
 
       <div class="formGroup">
         <input type="button" class="btn btnPrimary nagyit2" value="Sign Up"
-          (click)="authService.SignUp(userEmail.value, userPwd.value)">
+          (click)="authService.signUp(userEmail.value, userPwd.value)">
       </div>
 
       <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
+        <span class="or"><span class="or-inner">Or</span></span>
       </div>
 
       <!-- Continue with Google -->
       <div class="formGroup">
-        <button type="button" class="btn googleBtn nagyit2" (click)="authService.GoogleAuth()">
+        <button type="button" class="btn googleBtn nagyit2" (click)="authService.googleAuth()">
           <i class="fab fa-google-plus-g"></i>
           Continue with Google
         </button>

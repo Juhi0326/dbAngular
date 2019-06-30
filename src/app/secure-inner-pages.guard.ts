@@ -20,6 +20,7 @@ export class SecureInnerPagesGuard implements CanActivate {
     if (this.authService.isLoggedIn) {
        window.alert('Már be vagy lépve!');
        this.router.navigate(['customers']);
+       return false;
     }
     return true;
   }

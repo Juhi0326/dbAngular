@@ -19,16 +19,16 @@
       <!-- Calling SignIn Api from AuthService -->
       <div class="formGroup row">
         <input type="button" class="btn btnPrimary nagyit2" value="Log in"
-          (click)="authService.SignIn(userName.value, userPassword.value)">
+          (click)="authService.signIn(userName.value, userPassword.value)">
       </div>
 
       <div class="formGroup row">
-        <span class="or"><span class="orInner">Or</span></span>
+        <span class="or"><span class="or-inner">Or</span></span>
       </div>
 
       <!-- Calling GoogleAuth Api from AuthService -->
       <div class="formGroup row">
-        <button type="button" class="btn googleBtn nagyit2" (click)="authService.GoogleAuth()">
+        <button type="button" class="btn googleBtn nagyit2" (click)="authService.googleAuth()">
           <i class="fab fa-google-plus-g"></i>
           Log in with Google
         </button>
