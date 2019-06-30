@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../auth.service';
-import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,15 +9,6 @@ import { Router } from '@angular/router';
 export class SignInComponent {
 
   constructor(
-    public authService: AuthService,
-    private router: Router
+    public authService: AuthService
   ) { }
-
-  signUp() {
-    this.router.navigate(['login/register-user']);
-  }
-
-  forgotPassword() {
-    this.router.navigate(['login/forgot-password']);
-  }
 }

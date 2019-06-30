@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -10,11 +9,8 @@ import { Router } from '@angular/router';
 export class ForgotPasswordComponent {
 
   constructor(
-    public authService: AuthService,
-    private router: Router
+    public authService: AuthService
   ) { }
 
-  logIn(): void {
-    this.router.navigate(['login']);
-  }
+
 }
