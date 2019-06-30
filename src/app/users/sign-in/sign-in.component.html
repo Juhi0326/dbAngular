@@ -18,7 +18,7 @@
 
       <!-- Calling SignIn Api from AuthService -->
       <div class="formGroup row">
-        <input type="button" class="btn btnPrimary nagyit2" value="Log in"
+        <input type="button" class="btn btnPrimary enlarge2" value="Log in"
           (click)="authService.signIn(userName.value, userPassword.value)">
       </div>
 
@@ -28,19 +28,19 @@
 
       <!-- Calling GoogleAuth Api from AuthService -->
       <div class="formGroup row">
-        <button type="button" class="btn googleBtn nagyit2" (click)="authService.googleAuth()">
+        <button type="button" class="btn googleBtn enlarge2" (click)="authService.googleAuth()">
           <i class="fab fa-google-plus-g"></i>
           Log in with Google
         </button>
       </div>
 
-      <div class="forgotPassword nagyit2">
+      <div class="forgotPassword enlarge2">
         <a class="nounderline" [routerLink]="['/login/forgot-password']" routerLinkActive="router-link-active" >Forgot Password?</a>
       </div>
     </div>
 
     <div class="redirectToLogin">
-      <span>Don't have an account?<a class="redirect nagyit2 nounderline" [routerLink]="['/login/register-user']" routerLinkActive="router-link-active"> Sign Up</a></span>
+      <span>Don't have an account?<a class="redirect enlarge2 nounderline" [routerLink]="['/login/register-user']" routerLinkActive="router-link-active"> Sign Up</a></span>
     </div>
 
   </div>

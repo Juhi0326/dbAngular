@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-.nagyit:hover {
+.enlarge:hover {
   font-size: 200%;
 }
-.nagyit2:hover {
+.enlarge2:hover {
   font-size: 150%;
 }
 body{
@@ -16,5 +16,7 @@ h1 {
   font-size: 3rem;
 }
 .nounderline {
-  text-decoration: none !important
+  text-decoration: none !important;
+  color: inherit;
 }
+
