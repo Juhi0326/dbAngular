@@ -39,7 +39,11 @@ export class AuthService {
       .then((result) => {
         this.ngZone.run(() => {
 
-          this.router.navigate(['customers']);
+          if (this.redirectURL) {
+            this.router.navigateByUrl(this.redirectURL);
+          } else {
+            this.router.navigate(['']);
+          }
         });
         this.setUserData(result.user);
       }).catch((error) => {
