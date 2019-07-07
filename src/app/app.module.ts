@@ -14,6 +14,10 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './shared/home/home.component';
+import { MessageModule } from './shared/messages/message.module';
+
+
+
 
 @NgModule({
   declarations: [
@@ -31,7 +35,8 @@ import { HomeComponent } from './shared/home/home.component';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MessageModule
 
   ],
   providers: [CustomerService, AuthService],
