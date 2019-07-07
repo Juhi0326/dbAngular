@@ -22,8 +22,9 @@ export class SecureInnerPagesGuard implements CanActivate {
     if (this.authService.isLoggedIn) {
 
       this.ms.addMessage('You are alredy registrated!');
-       this.router.navigate([{outlets: {popup: ['messages'] }}]);
-       return false;
+      this.router.navigate([{ outlets: { popup: ['messages'] } }]);
+      document.documentElement.scrollTop = 0;
+      return false;
     }
     return true;
   }

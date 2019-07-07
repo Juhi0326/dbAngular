@@ -15,7 +15,7 @@ h1 {
   justify-content: center;
   font-size: 3rem;
 }
-.nounderline {
+.no-underline {
   text-decoration: none !important;
   color: inherit;
 }
