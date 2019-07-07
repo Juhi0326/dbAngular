@@ -1,3 +1,43 @@
-<h1 id="wellcome">
-  Welcome to my Customer Registration Page!
-</h1>
+<div class="jumbotron jumbotron-fluid mb-0">
+  <div class="container">
+    <h1 class="">Üdvözöllek az ügyfél nyilvántartó oldalamon!</h1>
+    <p class="lead">Szerkesztheted az ügyféladatokat, törölheted őket, illetve új ügyfelet hozhatsz létre. </p>
+    <a class="btn btn-green btn-lg mt-3" href="#" role="button" (click)="goToCustomers($event)">Tovább az
+      ügyfelekhez!</a>
+  </div>
+</div>
+
+<section class="bg-green py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mb-5 mb-md-0 col-md-5 my-md-auto">
+        <div class="card py-3 home-card">
+          <div class="card-body mx-auto">
+            <h4 class="card-title mb-4">Hogyan használd az oldalt?</h4>
+            <ol>
+              <li class="py-2">Regisztrálj!</li>
+              <li class="py-2">vagy lépj be a Google fiókoddal!</li>
+              <li class="pt-2">Adj hozzá új ügyfeleket, vagy módosítsd az adataikat!</li>
+            </ol>
+            <div class="text-center">
+              <a class="btn btn-outline-success px-3" href=# role="button" (click)="signUp($event)">Regisztrálok!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-7 my-auto">
+        <h3 class="mb-3">Mi az oldal célja?</h3>
+        <p>Az oldal egy demo oldal, a célja csupán annyi, hogy kísérletezgessek a weblapok létrehozásával.</p>
+        <p>Az oldal élő adatbázis kapcsolattal lett létrehozva (Firestore), minden módosítás a customers oldalon azonnal
+          elmentődik az adatbázisban. </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="pt-5 text-light bg-dark">
+  <div class="container">
+    made by István Juhász /2019
+
+  </div>
+</footer>

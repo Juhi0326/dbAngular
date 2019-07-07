@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="displayTableCell">
+
+
+
+    <div class="authBlock">
+      <h3>Sign In</h3>
+      <div class="formGroup row">
+        <input type="text" class="col-sm-6 col-form-label" placeholder="Username" #userName required>
+      </div>
+      <div>
+        <br>
+      </div>
+
+      <div class="formGroup row">
+        <input type="password" class="col-sm-6 col-form-label" placeholder="Password" #userPassword required>
+      </div>
+
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="formGroup row">
+        <input type="button" class="btn btnPrimary enlarge2" value="Sign in"
+          (click)="authService.signIn(userName.value, userPassword.value)">
+      </div>
+
+      <div class="formGroup row">
+        <span class="or"><span class="or-inner">Or</span></span>
+      </div>
+
+      <!-- Calling GoogleAuth Api from AuthService -->
+      <div class="formGroup row">
+        <button type="button" class="btn googleBtn enlarge2" (click)="authService.googleAuth()">
+          <i class="fab fa-google-plus-g"></i>
+          Sign in with Google
+        </button>
+      </div>
+
+      <div class="forgotPassword enlarge2">
+        <a class="no-underline" [routerLink]="['/login/forgot-password']" routerLinkActive="router-link-active" >Forgot Password?</a>
+      </div>
+    </div>
+
+    <div class="redirectToLogin">
+      <span>Don't have an account?<a class="redirect enlarge2 no-underline" [routerLink]="['/login/register-user']" routerLinkActive="router-link-active"> Sign Up</a></span>
+    </div>
+
+  </div>
+</div>
