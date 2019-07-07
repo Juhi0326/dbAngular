@@ -21,9 +21,13 @@ export class MessageService {
 
     // Create a new array and add the item to it
     const newMessages = [...this.messages];
-    newMessages.unshift(message + ' at ' + currentDate.toLocaleString());
+    newMessages.unshift(message);
 
     // Set the original array to this new array
     this._messages = newMessages;
+  }
+
+  clear() {
+    this._messages = [];
   }
 }

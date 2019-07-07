@@ -20,6 +20,7 @@ export class SecureInnerPagesGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.isLoggedIn) {
+
       this.ms.addMessage('You are alredy registrated!');
        this.router.navigate([{outlets: {popup: ['messages'] }}]);
        return false;

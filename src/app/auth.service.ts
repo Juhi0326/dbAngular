@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { User } from './users/User';
+import { MessageService } from './shared/messages/message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class AuthService {
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
+    public ms: MessageService,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
     /* Saving user data in localstorage when
@@ -47,7 +49,9 @@ export class AuthService {
         });
         this.setUserData(result.user);
       }).catch((error) => {
-        window.alert(error.message);
+        this.ms.clear();
+        this.ms.addMessage(error.message);
+       this.router.navigate([{outlets: {popup: ['messages'] }}]);
       });
   }
 
@@ -61,7 +65,9 @@ export class AuthService {
         this.sendVerificationMail();
         this.setUserData(result.user);
       }).catch((error) => {
-        window.alert(error.message);
+        this.ms.clear();
+        this.ms.addMessage(error.message);
+       this.router.navigate([{outlets: {popup: ['messages'] }}]);
       });
   }
 
@@ -79,7 +85,9 @@ export class AuthService {
       .then(() => {
         window.alert('Password reset email sent, check your inbox.');
       }).catch((error) => {
-        window.alert(error);
+        this.ms.clear();
+        this.ms.addMessage(error.message);
+       this.router.navigate([{outlets: {popup: ['messages'] }}]);
       });
   }
 
@@ -107,7 +115,9 @@ export class AuthService {
         });
         this.setUserData(result.user);
       }).catch((error) => {
-        window.alert(error);
+        this.ms.clear();
+        this.ms.addMessage(error.message);
+       this.router.navigate([{outlets: {popup: ['messages'] }}]);
       });
   }
 
