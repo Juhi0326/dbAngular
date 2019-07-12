@@ -14,9 +14,4 @@ export class SignUpComponent {
     private router: Router
   ) { }
 
-
-  logIn(): void {
-    this.router.navigate(['login']);
-  }
-
 }
