@@ -32,11 +32,11 @@ export class AddItemComponent implements OnInit {
     this.addItemForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-      age: ['', [Validators.required, Validators.min(18), Validators.max(120)]],
+      age: [0, [Validators.required, Validators.min(18), Validators.max(120)]],
       email: ['', [Validators.required, Validators.email]],
       gender: ['', [Validators.required]],
-      fullTime: ['', [Validators.required]],
-      yearsOfExperience: ['', [Validators.required, Validators.max(80)]]
+      fullTime: [true, [Validators.required]],
+      yearsOfExperience: [0, [Validators.required, Validators.max(80)]]
     });
   }
 
