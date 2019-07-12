@@ -7,7 +7,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     CustomersRoutingModule,
     Ng2SearchPipeModule,
   ]

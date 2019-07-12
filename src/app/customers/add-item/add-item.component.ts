@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CustModell } from './../cust-modell';
 import { Location } from '@angular/common';
 import { CustomerService } from './../customer.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
-export class AddItemComponent {
+export class AddItemComponent implements OnInit {
+  addItemForm: FormGroup;
+
   item: CustModell = {
     age: 0,
     email: '',
@@ -19,9 +22,26 @@ export class AddItemComponent {
     yearsOfExperience: 0
   };
 
-  constructor(private customerService: CustomerService, private location: Location) { }
+  constructor(
+    private customerService: CustomerService,
+    private location: Location,
+    private fb: FormBuilder
+  ) { }
+
+  ngOnInit() {
+    this.addItemForm = this.fb.group({
+      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+      lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+      age: ['', [Validators.required, Validators.min(18), Validators.max(120)]],
+      email: ['', [Validators.required, Validators.email]],
+      gender: ['', [Validators.required]],
+      fullTime: ['', [Validators.required]],
+      yearsOfExperience: ['', [Validators.required, Validators.max(80)]]
+    });
+  }
 
   onSubmit() {
+
     if (this.item.age > 0 && this.item.email !== '' &&
       this.item.fName !== '' && this.item.gender !== '' &&
       this.item.lName !== '') {
