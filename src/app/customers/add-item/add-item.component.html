@@ -70,24 +70,25 @@
         </span>
       </span>
     </div>
-    <div>
+    <div form-group>
       <label for="gender">Gender</label>
       <br>
       <label>
-          <input type="radio" value="Male" formControlName="gender">
-            <span>Male</span>
-        </label>
-        <br>
-        <label>
-          <input type="radio" value="Female" formControlName="gender">
-            <span>Female</span>
-        </label>
-      <span class="invalid-feedback">
-        <span *ngIf="addItemForm.get('gender').errors?.required">
-          Please enter your gender.
-        </span>
-      </span>
+        <input type="radio" value="Male" formControlName="gender">
+        <span>Male</span>
+      </label>
+      <br>
+      <label>
+        <input type="radio" value="Female" formControlName="gender">
+        <span>Female</span>
+      </label>
+      <div *ngIf="addItemForm.get('gender').errors?.required && isSubmitted" >
+        <div class="alert alert-danger" role="alert">
+        please select gender!
+        </div>
+      </div>
     </div>
+
     <div>
       <label for="fullTime">Full Time</label>
       <input type="text" class="form-control" id="fullTime" placeholder="isFullTime" formControlName="fullTime"
