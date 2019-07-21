@@ -3,6 +3,7 @@ import { CustModell } from './../cust-modell';
 import { Location } from '@angular/common';
 import { CustomerService } from './../customer.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from './../../shared/messages/message.service';
 
 @Component({
   selector: 'app-add-item',
@@ -25,13 +26,16 @@ export class AddItemComponent implements OnInit {
   constructor(
     private customerService: CustomerService,
     private location: Location,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public ms: MessageService
   ) { }
 
   ngOnInit() {
     this.addItemForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]],
+      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40),
+      Validators.pattern(/^[a-zA-ZáéíóőúűÁÉÍÓŐÚŰ]+$/)]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40),
+      Validators.pattern(/^[a-zA-ZáéíóőúűÁÉÍÓŐÚŰ]+$/)]],
       age: [0, [Validators.required, Validators.min(18), Validators.max(120), Validators.pattern(/^\d{1,3}$/)]],
       email: ['', [Validators.required, Validators.email]],
       gender: ['', [Validators.required]],
@@ -54,7 +58,7 @@ export class AddItemComponent implements OnInit {
       this.clear();
       this.goBack();
     } else {
-      console.log('the form is invalid');
+      this.ms.addMessage('The form is invalid!');
     }
   }
 

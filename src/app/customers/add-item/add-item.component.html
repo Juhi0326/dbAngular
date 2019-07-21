@@ -14,6 +14,9 @@
         <span *ngIf="addItemForm.get('firstName').errors?.minlength">
           The first name must be longer than 3 characters.
         </span>
+        <span *ngIf="addItemForm.get('firstName').errors?.pattern">
+          The First Name can contain only letters.
+        </span>
       </span>
     </div>
     <div>
@@ -27,6 +30,9 @@
         </span>
         <span *ngIf="addItemForm.get('lastName').errors?.minlength">
           The last name must be longer than 2 characters.
+        </span>
+        <span *ngIf="addItemForm.get('lastName').errors?.pattern">
+          The Last Name can contain only letters.
         </span>
       </span>
     </div>
@@ -66,8 +72,16 @@
     </div>
     <div>
       <label for="gender">Gender</label>
-      <input type="text" class="form-control" id="gender" placeholder="Gender" formControlName="gender" name="gender" [ngClass]="{'is-invalid': (addItemForm.get('gender').touched ||
-        addItemForm.get('gender').dirty) && !addItemForm.get('gender').valid}">
+      <br>
+      <label>
+          <input type="radio" value="Male" formControlName="gender">
+            <span>Male</span>
+        </label>
+        <br>
+        <label>
+          <input type="radio" value="Female" formControlName="gender">
+            <span>Female</span>
+        </label>
       <span class="invalid-feedback">
         <span *ngIf="addItemForm.get('gender').errors?.required">
           Please enter your gender.

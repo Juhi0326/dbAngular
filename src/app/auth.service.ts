@@ -36,59 +36,55 @@ export class AuthService {
   }
 
   // Sign in with email/password
-  signIn(email, password) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.ngZone.run(() => {
-
-          if (this.redirectURL) {
-            this.router.navigateByUrl(this.redirectURL);
-          } else {
-            this.router.navigate(['']);
-          }
-        });
-        this.setUserData(result.user);
-      }).catch((error) => {
-        this.ms.clear();
-        this.ms.addMessage(error.message);
-       this.router.navigate([{outlets: {popup: ['messages'] }}]);
+  async signIn(email: string, password: string) {
+    try {
+      const result = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+      this.ngZone.run(() => {
+        if (this.redirectURL) {
+          this.router.navigateByUrl(this.redirectURL);
+        } else {
+          this.router.navigate(['']);
+        }
       });
+      this.setUserData(result.user);
+    } catch (error) {
+      this.ms.clear();
+      this.ms.addMessage(error.message);
+      this.router.navigate([{ outlets: { popup: ['messages'] } }]);
+    }
   }
 
   // Sign up with email/password
-  signUp(email, password) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign
-        up and returns promise */
-
-        this.sendVerificationMail();
-        this.setUserData(result.user);
-      }).catch((error) => {
-        this.ms.clear();
-        this.ms.addMessage(error.message);
-       this.router.navigate([{outlets: {popup: ['messages'] }}]);
-      });
+  async signUp(email: string, password: string) {
+    try {
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+      /* Call the SendVerificaitonMail() function when new user sign
+      up and returns promise */
+      this.sendVerificationMail();
+      this.setUserData(result.user);
+    } catch (error) {
+      this.ms.clear();
+      this.ms.addMessage(error.message);
+      this.router.navigate([{ outlets: { popup: ['messages'] } }]);
+    }
   }
 
   // Send email verfificaiton when new user sign up
-  sendVerificationMail() {
-    return this.afAuth.auth.currentUser.sendEmailVerification()
-      .then(() => {
-        this.router.navigate(['verify-email-address']);
-      });
+  async sendVerificationMail() {
+    await this.afAuth.auth.currentUser.sendEmailVerification();
+    this.router.navigate(['verify-email-address']);
   }
 
   // Reset Forggot password
-  forgotPassword(passwordResetEmail) {
-    return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
-      .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
-      }).catch((error) => {
-        this.ms.clear();
-        this.ms.addMessage(error.message);
-       this.router.navigate([{outlets: {popup: ['messages'] }}]);
-      });
+  async forgotPassword(passwordResetEmail) {
+    try {
+      await this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
+      window.alert('Password reset email sent, check your inbox.');
+    } catch (error) {
+      this.ms.clear();
+      this.ms.addMessage(error.message);
+      this.router.navigate([{ outlets: { popup: ['messages'] } }]);
+    }
   }
 
   // Returns true when user is looged in and email is verified
@@ -103,28 +99,28 @@ export class AuthService {
   }
 
   // Auth logic to run auth providers
-  authLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
-      .then((result) => {
-        this.ngZone.run(() => {
-          if (this.redirectURL) {
-            this.router.navigateByUrl(this.redirectURL);
-          } else {
-            this.router.navigate(['']);
-          }
-        });
-        this.setUserData(result.user);
-      }).catch((error) => {
-        this.ms.clear();
-        this.ms.addMessage(error.message);
-       this.router.navigate([{outlets: {popup: ['messages'] }}]);
+  async authLogin(provider) {
+    try {
+      const result = await this.afAuth.auth.signInWithPopup(provider);
+      this.ngZone.run(() => {
+        if (this.redirectURL) {
+          this.router.navigateByUrl(this.redirectURL);
+        } else {
+          this.router.navigate(['']);
+        }
       });
+      this.setUserData(result.user);
+    } catch (error) {
+      this.ms.clear();
+      this.ms.addMessage(error.message);
+      this.router.navigate([{ outlets: { popup: ['messages'] } }]);
+    }
   }
 
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  setUserData(user) {
+  setUserData(user: User) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
@@ -139,11 +135,9 @@ export class AuthService {
   }
 
   // Sign out
-  signOut() {
-    return this.afAuth.auth.signOut().then(() => {
-      localStorage.removeItem('user');
-
-    });
+  async signOut() {
+    await this.afAuth.auth.signOut();
+    localStorage.removeItem('user');
   }
 
 }
