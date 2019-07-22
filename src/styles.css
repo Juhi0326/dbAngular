@@ -25,3 +25,8 @@ h1 {
   color: #dc3545;
 }
 
+.center {
+  display: flex;
+  justify-content: center
+}
+
