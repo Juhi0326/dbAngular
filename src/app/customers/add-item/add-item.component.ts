@@ -40,7 +40,7 @@ export class AddItemComponent implements OnInit {
       age: [0, [Validators.required, Validators.min(18), Validators.max(120), Validators.pattern(/^\d{1,3}$/)]],
       email: ['', [Validators.required, Validators.email]],
       gender: ['', [Validators.required]],
-      fullTime: [true, [Validators.required]],
+      fullTime: [true],
       yearsOfExperience: [0, [Validators.required, Validators.max(80), Validators.pattern(/^\d{1,2}$/)]]
     });
   }

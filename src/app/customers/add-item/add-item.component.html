@@ -70,7 +70,7 @@
         </span>
       </span>
     </div>
-    <div form-group>
+    <div>
       <label for="gender">Gender</label>
       <br>
       <label>
@@ -83,26 +83,20 @@
         <span>Female</span>
       </label>
       <div *ngIf="addItemForm.get('gender').errors?.required && isSubmitted" >
-        <div class="alert alert-danger" role="alert">
+        <div class="alert">
         please select gender!
         </div>
       </div>
     </div>
-
-    <div>
-      <label for="fullTime">Full Time</label>
-      <input type="text" class="form-control" id="fullTime" placeholder="isFullTime" formControlName="fullTime"
-        name="isFullTime" [ngClass]="{'is-invalid': (addItemForm.get('fullTime').touched ||
-        addItemForm.get('fullTime').dirty) && !addItemForm.get('fullTime').valid}">
-      <span class="invalid-feedback">
-        <span *ngIf="addItemForm.get('fullTime').errors?.required">
-          Please enter prefered job time (full time or not).
-        </span>
-      </span>
+    <br>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="fullTime" formControlName="fullTime">
+      <label class="form-check-label" for="fullTime">Full Time</label>
     </div>
-    <div>
 
-      <label for="years Of Experience">Years Of Experience</label>
+    <div >
+
+      <label for="years Of Experience">years Of Experience</label>
 
       <input type="text" class="form-control" id="years Of Experience" placeholder="years Of Experience (number)"
         formControlName="yearsOfExperience" name="yearsOfExperience" [ngClass]="{'is-invalid': (addItemForm.get('yearsOfExperience').touched ||
