@@ -4,6 +4,7 @@ import { CustomerService } from './../customer.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from './../../shared/messages/message.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-add-item',
@@ -20,7 +21,8 @@ export class AddItemComponent implements OnInit {
     gender: '',
     isFullTime: false,
     lName: '',
-    yearsOfExperience: 0
+    yearsOfExperience: 0,
+    uid: ''
   };
   isSubmitted: boolean;
 
@@ -28,7 +30,8 @@ export class AddItemComponent implements OnInit {
     private customerService: CustomerService,
     private fb: FormBuilder,
     public ms: MessageService,
-    private router: Router
+    private router: Router,
+    private authservice: AuthService
   ) { }
 
   ngOnInit() {
@@ -57,10 +60,12 @@ export class AddItemComponent implements OnInit {
       this.item.gender = this.addItemForm.get('gender').value;
       this.item.isFullTime = this.addItemForm.get('fullTime').value;
       this.item.yearsOfExperience = this.addItemForm.get('yearsOfExperience').value;
+      this.item.uid = JSON.stringify(this.authservice.userData.uid);
       this.customerService.addCustomer(this.item);
       this.isSubmitted = true;
       this.clear();
       this.goBack();
+
     } else {
       this.isSubmitted = true;
       this.ms.addMessage('The form is invalid!');

@@ -11,7 +11,7 @@ import { MessageService } from './shared/messages/message.service';
 })
 
 export class AuthService {
-  userData: any; // Save logged in user data
+  userData: User; // Save logged in user data
   redirectURL: string;
 
   constructor(
@@ -28,6 +28,7 @@ export class AuthService {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user'));
+        console.log(JSON.stringify(this.userData.uid));
       } else {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
