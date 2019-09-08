@@ -3,6 +3,7 @@ import { CustModell } from './../cust-modell';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CustomerService } from './../customer.service';
+import { AuthService } from './../../auth.service';
 
 
 @Component({
@@ -20,13 +21,14 @@ export class CustomersComponent implements OnInit {
     private customerService: CustomerService,
     private router: Router,
     private route: ActivatedRoute,
+    private authservice: AuthService,
     private location: Location) { }
 
   ngOnInit() {
     this.searchText = this.route.snapshot.queryParamMap.get('filterBy') || '';
 
     this.customerService.getCustomers().subscribe(items => {
-      this.items = items;
+      this.items = items.filter(item => item.uid === JSON.stringify(this.authservice.userData.uid));
     });
   }
 
