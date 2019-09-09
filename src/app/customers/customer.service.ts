@@ -15,9 +15,9 @@ export class CustomerService {
   customer: Observable<CustModell>;
 
 
-  constructor(private db: AngularFirestore) {
+  constructor(private dataBase: AngularFirestore) {
 
-    this.itemsCollection = this.db.collection('proba', ref => ref.orderBy('lName', 'asc'));
+    this.itemsCollection = this.dataBase.collection('proba', ref => ref.orderBy('lName', 'asc'));
 
     this.items = this.itemsCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -31,7 +31,7 @@ export class CustomerService {
     return this.items;
   }
   GetCustomerById(id: string): Observable<CustModell> {
-    this.itemDoc = this.db.doc(`proba/${id}`);
+    this.itemDoc = this.dataBase.doc(`proba/${id}`);
     this.customer = this.itemDoc.snapshotChanges().pipe(map(action => {
       if (!action.payload.exists) {
         return null;
@@ -49,7 +49,7 @@ export class CustomerService {
     this.itemsCollection.add(item);
   }
   deleteCustomer(item: CustModell) {
-    this.itemDoc = this.db.doc(`proba/${item.id}`);
+    this.itemDoc = this.dataBase.doc(`proba/${item.id}`);
     this.itemDoc.delete().then(function () {
     }).catch(function (error) {
       console.error('Error removing document: ', error);
@@ -57,7 +57,7 @@ export class CustomerService {
   }
 
   updateCustomer(item: CustModell) {
-    this.itemDoc = this.db.doc(`proba/${item.id}`);
+    this.itemDoc = this.dataBase.doc(`proba/${item.id}`);
     this.itemDoc.update(item);
   }
 

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CustModell } from './../cust-modell';
 import { CustomerService } from './../customer.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from './../../shared/messages/message.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-item',
@@ -28,14 +28,14 @@ export class AddItemComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
-    private fb: FormBuilder,
-    public ms: MessageService,
+    private formBuilder: FormBuilder,
+    public messageService: MessageService,
     private router: Router,
     private authservice: AuthService
   ) { }
 
   ngOnInit() {
-    this.addItemForm = this.fb.group({
+    this.addItemForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40),
       Validators.pattern(/^[a-zA-ZáéíóöőüúűÁÉÍÓÖŐÚŰ]+$/)]],
       lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40),
@@ -49,7 +49,7 @@ export class AddItemComponent implements OnInit {
   }
 
   onSubmit() {
-    this.ms.clear();
+    this.messageService.clear();
 
     if (this.addItemForm.valid) {
 
@@ -68,7 +68,7 @@ export class AddItemComponent implements OnInit {
 
     } else {
       this.isSubmitted = true;
-      this.ms.addMessage('The form is invalid!');
+      this.messageService.addMessage('The form is invalid!');
       this.router.navigate([{ outlets: { popup: ['messages'] } }]);
     }
   }
