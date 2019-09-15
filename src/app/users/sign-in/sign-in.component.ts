@@ -34,16 +34,16 @@ export class SignInComponent implements OnInit {
 
   signIn(): void {
     if (this.signInForm.valid) {
-    this.userName = this.signInForm.get('userName').value;
-    this.password = this.signInForm.get('userPassword').value;
-    this.authService.signIn(this.userName, this.password);
+      this.userName = this.signInForm.get('userName').value;
+      this.password = this.signInForm.get('userPassword').value;
+      this.authService.signIn(this.userName, this.password);
     } else {
       this.messageService.addMessage('The form is invalid!');
       this.router.navigate([{ outlets: { popup: ['messages'] } }]);
     }
   }
 
-  signInWithGoogle() {
+  signInWithGoogle(): void {
     this.authService.googleAuth();
   }
 

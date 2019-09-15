@@ -4,18 +4,39 @@
     <div class="authBlock">
       <h3>Sign Up</h3>
 
-      <div class="formGroup">
-        <input type="email" class="col-sm-6 col-form-label" placeholder="Email Address" #userEmail required>
-      </div>
-      <br>
-      <div class="formGroup">
-        <input type="password" class="col-sm-6 col-form-label" placeholder="Password" #userPwd required>
-      </div>
+      <form novalidate (ngSubmit)="signUp()" class="form-group col-6" [formGroup]="signUpForm">
+        <label for="userName">User name</label>
+        <input type="email" id="userName" class="form-control" formControlName="userName" name='userName'
+        [ngClass]="{'is-invalid': (signUpForm.get('userName').touched ||
+        signUpForm.get('userName').dirty) && !signUpForm.get('userName').valid}"/>
+        <span class="invalid-feedback">
+            <span *ngIf="signUpForm.get('userName').hasError('required')">
+              Please enter user name
+            </span>
+            <span *ngIf="signUpForm.get('userName').hasError('email')">
+              The format of user name must be email
+            </span>
+          </span>
 
-      <div class="formGroup">
-        <input type="button" class="btn btnPrimary enlarge2" value="Sign Up"
-          (click)="authService.signUp(userEmail.value, userPwd.value)">
-      </div>
+        <label for="userPassword">Password</label>
+        <input type="password" class="form-control" id="userPassword" formControlName="userPassword"
+          name='userPassword' [ngClass]="{'is-invalid': (signUpForm.get('userPassword').touched ||
+          signUpForm.get('userPassword').dirty) && !signUpForm.get('userPassword').valid}">
+          <span class="invalid-feedback">
+              <span *ngIf="signUpForm.get('userPassword').hasError('required')">
+                Please enter your password!
+              </span>
+              <span *ngIf="signUpForm.get('userPassword').hasError('minlength')">
+                  the password must be at least 10 characters long
+              </span>
+              <span *ngIf="signUpForm.get('userPassword').hasError('maxlength')">
+                  the password must be at most 10 characters long
+                </span>
+            </span>
+        <br>
+        <button type="submit" id="submitButton" class="btn btn-primary btn-lg"> Sign Up </button>
+
+      </form>
 
       <div class="formGroup">
         <span class="or"><span class="or-inner">Or</span></span>
