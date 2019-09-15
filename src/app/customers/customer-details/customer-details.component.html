@@ -13,51 +13,127 @@
   </div>
 
   <div *ngIf="editState && itemToEdit.id == customerDetails.id">
-    <form (ngSubmit)="updateItem(item)" class="form-group">
+    <form novalidate (ngSubmit)="onSubmit()" class="form-group col-6" [formGroup]="editItemForm">
       <div>
+          <label for="First Name">First name</label>
+          <input type="text" class="form-control" id="First Name" placeholder="First Name" formControlName="firstName"
+            name='fName' [ngClass]="{'is-invalid': (editItemForm.get('firstName').touched ||
+            editItemForm.get('firstName').dirty) &&
+            !editItemForm.get('firstName').valid }">
+          <span class="invalid-feedback">
+            <span *ngIf="editItemForm.get('firstName').hasError('required')">
+              Please enter your first name.
+            </span>
+            <span *ngIf="editItemForm.get('firstName').hasError('minlength')">
+              The first name must be longer than 3 characters.
+            </span>
+            <span *ngIf="editItemForm.get('firstName').hasError('pattern')">
+              The First Name can contain only letters.
+            </span>
+          </span>
+        </div>
+        <div>
+          <label for="Last Name">Last name</label>
+          <input type="text" class="form-control" id="Last Name" placeholder="Last Name" formControlName="lastName"
+            name='lName' [ngClass]="{'is-invalid': (editItemForm.get('lastName').touched ||
+            editItemForm.get('lastName').dirty) && !editItemForm.get('lastName').valid}">
+          <span class="invalid-feedback">
+            <span *ngIf="editItemForm.get('lastName').hasError('required')">
+              Please enter your last name.
+            </span>
+            <span *ngIf="editItemForm.get('lastName').hasError('minlength')">
+              The last name must be longer than 2 characters.
+            </span>
+            <span *ngIf="editItemForm.get('lastName').hasError('pattern')">
+              The Last Name can contain only letters.
+            </span>
+          </span>
+        </div>
+        <div>
+          <label for="Age">Age</label>
+          <input type="text" class="form-control" id="Age" placeholder="Age" formControlName="age" name='age' [ngClass]="{'is-invalid': (editItemForm.get('age').touched ||
+            editItemForm.get('age').dirty) && !editItemForm.get('age').valid}">
+          <span class="invalid-feedback">
+            <span *ngIf="editItemForm.get('age').hasError('required')">
+              Please enter your age.
+            </span>
+            <span *ngIf="editItemForm.get('age').hasError('min')">
+              The age must be between 18 and 120.
+            </span>
+            <span *ngIf="editItemForm.get('age').hasError('max')">
+              The age must be between 18 and 120.
+            </span>
+            <span *ngIf="editItemForm.get('age').hasError('pattern')">
+              The age must be a number (1-3 digit).
+            </span>
+          </span>
+        </div>
 
-        <label for="First Name">First name</label>
-        <input type="text" class="form-control" id="First Name" placeholder="First Name"
-          [(ngModel)]='customerDetails.fName' name='fName'>
-      </div>
-      <div>
-        <label for="Last Name">Last name</label>
-        <input type="text" class="form-control" id="Last Name" placeholder="Last Name"
-          [(ngModel)]='customerDetails.lName' name='lName'>
-      </div>
-      <div>
-        <label for="Age">Age</label>
-        <input type="text" class="form-control" id="Age" placeholder="Age" [(ngModel)]='customerDetails.age' name='age'>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="email address" formControlName="email"
+            name='email' [ngClass]="{'is-invalid': (editItemForm.get('email').touched ||
+            editItemForm.get('email').dirty) && !editItemForm.get('email').valid}">
+          <span class="invalid-feedback">
+            <span *ngIf="editItemForm.get('email').hasError('required')">
+              Please enter your email address.
+            </span>
+            <span *ngIf="editItemForm.get('email').hasError('email')">
+              Please enter your email address in email format.
+            </span>
+          </span>
+        </div>
+        <div>
+          <label for="gender">Gender</label>
+          <br>
+          <label>
+            <input type="radio" value="Male" formControlName="gender">
+            <span>Male</span>
+          </label>
+          <br>
+          <label>
+            <input type="radio" value="Female" formControlName="gender">
+            <span>Female</span>
+          </label>
+          <div *ngIf="editItemForm.get('gender').hasError('required') && isSubmitted" >
+            <div class="alert">
+            please select gender!
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="fullTime" formControlName="fullTime">
+          <label class="form-check-label" for="fullTime">Full Time</label>
+        </div>
+
+        <div >
+
+          <label for="years Of Experience">years Of Experience</label>
+
+          <input type="text" class="form-control" id="years Of Experience" placeholder="years Of Experience (number)"
+            formControlName="yearsOfExperience" name="yearsOfExperience" [ngClass]="{'is-invalid': (editItemForm.get('yearsOfExperience').touched ||
+            editItemForm.get('yearsOfExperience').dirty) && !editItemForm.get('yearsOfExperience').valid}">
+          <span class="invalid-feedback">
+            <span *ngIf="editItemForm.get('yearsOfExperience').hasError('required')">
+              Please enter your years Of Experience.
+            </span>
+            <span *ngIf="editItemForm.get('yearsOfExperience').hasError('max')">
+              The years Of Experience must be max. 80.
+            </span>
+            <span *ngIf="editItemForm.get('yearsOfExperience').hasError('pattern')">
+              The years Of Experience must be a number (1-2 digit).
+            </span>
+          </span>
+        </div>
+        <br>
+        <div>
+            <br>
+            <button (click)="updateItem(customerDetails)" class="btn btn-warning">Update record</button>
+            <button (click)="deleteItem(customerDetails)" class="btn btn-danger">Delete record</button>
+            <br>
+            <br>
+            <button (click)="goBack()" class="btn btn-primary">go back to customers</button>
       </div>
 
-      <div>
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="email address"
-          [(ngModel)]='customerDetails.email' name='email'>
-      </div>
-      <div>
-        <label for="gender">Gender</label>
-        <input type="text" class="form-control" id="gender" placeholder="Gender" [(ngModel)]='customerDetails.gender'
-          name="gender">
-      </div>
-      <div>
-        <label for="fullTime">Full Time</label>
-        <input type="text" class="form-control" id="fullTime" placeholder="isFullTime"
-          [(ngModel)]='customerDetails.isFullTime' name="isFullTime">
-      </div>
-      <div>
-
-        <label for="years Of Experience">Years Of Experience</label>
-
-        <input type="text" class="form-control" id="years Of Experience" placeholder="years Of Experience (number)"
-          [(ngModel)]='customerDetails.yearsOfExperience' name="yearsOfExperience">
-      </div>
-      <br>
-      <button (click)="updateItem(customerDetails)" class="btn btn-warning">Update record</button>
-      <button (click)="deleteItem(customerDetails)" class="btn btn-danger">Delete record</button>
     </form>
-  </div>
-
-
-  <button (click)="goBack()" class="btn btn-primary">go back to customers</button>
-</div>
