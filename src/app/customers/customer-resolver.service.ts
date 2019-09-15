@@ -21,7 +21,7 @@ export class CustomerResolverService implements Resolve<CustModell> {
       take(1),
       mergeMap(customer => {
         if (customer) {
-          return of(customer)
+          return of(customer);
         } else { // id not found
           this.router.navigate([`/customers`]);
           return EMPTY;

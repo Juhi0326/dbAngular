@@ -7,7 +7,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 
