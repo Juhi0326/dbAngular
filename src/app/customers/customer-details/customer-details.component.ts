@@ -56,18 +56,18 @@ export class CustomerDetailsComponent implements OnInit {
       { queryParamsHandling: 'preserve' });
   }
 
-  deleteItem(item: CustModell) {
+  deleteItem(item: CustModell): void {
     item = this.getItem();
     this.customerService.deleteCustomer(item);
     this.clearState();
     this.goBack();
   }
-  editItem(item: CustModell) {
+  editItem(item: CustModell): void {
     item = this.getItem();
     this.editState = true;
     this.itemToEdit = item;
   }
-  updateItem(item: CustModell) {
+  updateItem(item: CustModell): void {
     if (this.editItemForm.valid) {
       item = this.getItem();
       this.customerService.updateCustomer(item);
@@ -79,7 +79,7 @@ export class CustomerDetailsComponent implements OnInit {
 
   }
 
-  clearState() {
+  clearState(): void {
     this.editState = false;
     this.itemToEdit = null;
   }

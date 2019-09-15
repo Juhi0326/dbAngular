@@ -1,26 +1,19 @@
 <div class="container">
   <div class="displayTableCell">
 
-
-
-    <div class="authBlock">
       <h3>Sign In</h3>
-      <div class="formGroup row">
-        <input type="text" class="col-sm-6 col-form-label" placeholder="Username" #userName required>
-      </div>
-      <div>
-        <br>
-      </div>
 
-      <div class="formGroup row">
-        <input type="password" class="col-sm-6 col-form-label" placeholder="Password" #userPassword required>
-      </div>
+    <form novalidate (ngSubmit)="signIn()" class="form-group col-6" [formGroup]="signInForm">
+        <label for="userName">User name</label>
+        <input type="text" class="form-control" id="userName" formControlName="userName"
+        name='userName'>
+        <label for="userPassword">User name</label>
+        <input type="password" class="form-control" id="userPassword" formControlName="userPassword"
+        name='userPassword'>
+      <br>
+        <button type="submit" id="submitButton" class="btn btn-primary btn-lg"> Sign in </button>
 
-      <!-- Calling SignIn Api from AuthService -->
-      <div class="formGroup row">
-        <input type="button" class="btn btnPrimary enlarge2" value="Sign in"
-          (click)="authService.signIn(userName.value, userPassword.value)">
-      </div>
+    </form>
 
       <div class="formGroup row">
         <span class="or"><span class="or-inner">Or</span></span>
@@ -28,7 +21,7 @@
 
       <!-- Calling GoogleAuth Api from AuthService -->
       <div class="formGroup row">
-        <button type="button" class="btn googleBtn enlarge2" (click)="authService.googleAuth()">
+        <button type="button" class="btn googleBtn enlarge2" (click)="signInWithGoogle()">
           <i class="fab fa-google-plus-g"></i>
           Sign in with Google
         </button>
@@ -43,5 +36,4 @@
       <span>Don't have an account?<a class="redirect enlarge2 no-underline" [routerLink]="['/login/register-user']" routerLinkActive="router-link-active"> Sign Up</a></span>
     </div>
 
-  </div>
 </div>
