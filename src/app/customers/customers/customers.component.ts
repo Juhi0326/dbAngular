@@ -46,7 +46,7 @@ export class CustomersComponent implements OnInit {
 
   refresh() {
     this.customerService.getCustomers().subscribe(items => {
-      this.items = items;
+      this.items = items.filter(item => item.uid === JSON.stringify(this.authservice.userData.uid));
     });
   }
 }

@@ -14,12 +14,14 @@
         <div class="card py-3 home-card">
           <div class="card-body mx-auto">
             <h4 class="card-title mb-4">Hogyan használd az oldalt?</h4>
-            <ol>
-              <li class="py-2">Regisztrálj!</li>
-              <li class="py-2">vagy lépj be a Google fiókoddal!</li>
+            <ul>
+              <li class="py-2" *ngIf="!authService.isLoggedIn" >
+                Regisztrálj!</li>
+              <li class="py-2" *ngIf="!authService.isLoggedIn">
+                Lépj be a Google fiókoddal!</li>
               <li class="pt-2">Adj hozzá új ügyfeleket, vagy módosítsd az adataikat!</li>
-            </ol>
-            <div class="text-center">
+            </ul>
+            <div class="text-center" *ngIf="!authService.isLoggedIn" >
               <a class="btn btn-outline-success px-3" href=# role="button" (click)="signUp($event)">Regisztrálok!</a>
             </div>
           </div>

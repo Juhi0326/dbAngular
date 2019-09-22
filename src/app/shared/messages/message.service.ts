@@ -20,7 +20,7 @@ export class MessageService {
     const currentDate = new Date();
 
     // Create a new array and add the item to it
-    const newMessages = [...this.messages];
+    const newMessages = [...this._messages];
     newMessages.unshift(message);
 
     // Set the original array to this new array
