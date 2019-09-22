@@ -23,5 +23,11 @@
       </li>
 
     </ul>
+
   </div>
+
+    <div class="user-name" *ngIf="isLoggedIn();" >
+      active user: {{authSevice.loggedInUser}}
+    </div>
+
 </nav>

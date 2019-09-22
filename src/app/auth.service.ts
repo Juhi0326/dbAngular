@@ -40,11 +40,11 @@ export class AuthService {
     try {
       const result = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
       this.ngZone.run(() => {
-        if (this.redirectURL) {
-          this.router.navigateByUrl(this.redirectURL);
-        } else {
+        // if (this.redirectURL) {
+        //   this.router.navigateByUrl(this.redirectURL);
+        // } else {
           this.router.navigate(['']);
-        }
+    // }
       });
       this.setUserData(result.user);
     } catch (error) {
@@ -104,11 +104,11 @@ export class AuthService {
     try {
       const result = await this.afAuth.auth.signInWithPopup(provider);
       this.ngZone.run(() => {
-        if (this.redirectURL) {
+/*         if (this.redirectURL) {
           this.router.navigateByUrl(this.redirectURL);
-        } else {
+        } else { */
           this.router.navigate(['']);
-        }
+        // }
       });
       this.setUserData(result.user);
     } catch (error) {
@@ -140,5 +140,7 @@ export class AuthService {
     await this.afAuth.auth.signOut();
     localStorage.removeItem('user');
   }
-
+  get loggedInUser(): string {
+    return JSON.stringify(this.userData.email);
+  }
 }

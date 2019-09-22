@@ -6,3 +6,8 @@ a{
   color: rgb(176, 187, 128);
 
 }
+.user-name {
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+}
