@@ -140,7 +140,7 @@ export class AuthService {
     await this.afAuth.auth.signOut();
     localStorage.removeItem('user');
   }
-  get loggedInUser(): string {
-    return JSON.stringify(this.userData.email);
+   get loggedInUser() {
+    return this.userData.email;
   }
 }
