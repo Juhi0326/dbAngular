@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { HomeComponent } from './shared/home/home.component';
+
 import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './core/home.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent },
