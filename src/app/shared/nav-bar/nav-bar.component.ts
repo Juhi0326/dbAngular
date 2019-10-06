@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 import { User } from './../../users/User';
@@ -13,6 +13,7 @@ import { User } from './../../users/User';
 
 
 export class NavBarComponent {
+
 
 
   constructor(private authSevice: AuthService, private router: Router) { }
