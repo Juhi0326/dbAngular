@@ -2,9 +2,9 @@ import { Injectable, NgZone } from '@angular/core';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
 import { User } from './users/User';
 import { MessageService } from './shared/messages/message.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
