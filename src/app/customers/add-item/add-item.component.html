@@ -4,9 +4,7 @@
 
       <label for="First Name">First name</label>
       <input type="text" class="form-control" id="First Name" placeholder="First Name" formControlName="firstName"
-        name='fName' [ngClass]="{'is-invalid': (addItemForm.get('firstName').touched ||
-        addItemForm.get('firstName').dirty) &&
-        !addItemForm.get('firstName').valid }">
+        name='fName' >
       <span class="invalid-feedback">
         <span *ngIf="addItemForm.get('firstName').hasError('required')">
           Please enter your first name.
@@ -22,8 +20,7 @@
     <div>
       <label for="Last Name">Last name</label>
       <input type="text" class="form-control" id="Last Name" placeholder="Last Name" formControlName="lastName"
-        name='lName' [ngClass]="{'is-invalid': (addItemForm.get('lastName').touched ||
-        addItemForm.get('lastName').dirty) && !addItemForm.get('lastName').valid}">
+        name='lName'>
       <span class="invalid-feedback">
         <span *ngIf="addItemForm.get('lastName').hasError('required')">
           Please enter your last name.
@@ -38,8 +35,7 @@
     </div>
     <div>
       <label for="Age">Age</label>
-      <input type="text" class="form-control" id="Age" placeholder="Age" formControlName="age" name='age' [ngClass]="{'is-invalid': (addItemForm.get('age').touched ||
-        addItemForm.get('age').dirty) && !addItemForm.get('age').valid}">
+      <input type="text" class="form-control" id="Age" placeholder="Age" formControlName="age" name='age'>
       <span class="invalid-feedback">
         <span *ngIf="addItemForm.get('age').hasError('required')">
           Please enter your age.
@@ -59,8 +55,7 @@
     <div>
       <label for="email">Email</label>
       <input type="email" class="form-control" id="email" placeholder="email address" formControlName="email"
-        name='email' [ngClass]="{'is-invalid': (addItemForm.get('email').touched ||
-        addItemForm.get('email').dirty) && !addItemForm.get('email').valid}">
+        name='email'>
       <span class="invalid-feedback">
         <span *ngIf="addItemForm.get('email').hasError('required')">
           Please enter your email address.
@@ -99,8 +94,7 @@
       <label for="years Of Experience">years Of Experience</label>
 
       <input type="text" class="form-control" id="years Of Experience" placeholder="years Of Experience (number)"
-        formControlName="yearsOfExperience" name="yearsOfExperience" [ngClass]="{'is-invalid': (addItemForm.get('yearsOfExperience').touched ||
-        addItemForm.get('yearsOfExperience').dirty) && !addItemForm.get('yearsOfExperience').valid}">
+        formControlName="yearsOfExperience" name="yearsOfExperience" >
       <span class="invalid-feedback">
         <span *ngIf="addItemForm.get('yearsOfExperience').hasError('required')">
           Please enter your years Of Experience.

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map, publishReplay, refCount } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { CustModell } from './cust-modell';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class CustomerService {
   customer: Observable<CustModell>;
 
 
-  constructor(private dataBase: AngularFirestore) {
+  constructor(private dataBase: AngularFirestore, private authservice: AuthService) {
 
     this.itemsCollection = this.dataBase.collection('proba', ref => ref.orderBy('lName', 'asc'));
 
@@ -23,10 +24,12 @@ export class CustomerService {
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as CustModell;
         const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    ).pipe(publishReplay(1)).pipe(refCount());
+        const uid = JSON.stringify(this.authservice.userData.uid);
+        return { id, uid, ...data };
+      })),
+    );
   }
+
   getCustomers() {
     return this.items;
   }

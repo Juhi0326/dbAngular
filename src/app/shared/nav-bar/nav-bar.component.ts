@@ -11,10 +11,7 @@ import { User } from './../../users/User';
   styleUrls: ['./nav-bar.component.css']
 })
 
-
 export class NavBarComponent {
-
-
 
   constructor(private authSevice: AuthService, private router: Router) { }
 
