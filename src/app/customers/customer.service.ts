@@ -26,7 +26,9 @@ export class CustomerService {
         const id = a.payload.doc.id;
         const uid = JSON.stringify(this.authservice.userData.uid);
         return { id, uid, ...data };
-      })),
+      })), map(myCustomers => myCustomers.filter(
+        cust => cust.uid === JSON.stringify(this.authservice.userData.uid)
+      ) )
     );
   }
 
