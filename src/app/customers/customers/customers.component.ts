@@ -28,7 +28,7 @@ export class CustomersComponent implements OnInit {
   ngOnInit() {
     this.searchText = this.route.snapshot.queryParamMap.get('filterBy') || '';
 
-    this.items$ = this.customerService.getCustomers();
+    this.items$ = this.customerService.getMycustomers();
   }
 
   goBack(): void {
@@ -42,10 +42,4 @@ export class CustomersComponent implements OnInit {
       }
     );
   }
-
-/*   refresh() {
-    this.customerService.getCustomers().subscribe(items => {
-      this.items = items.filter(item => item.uid === JSON.stringify(this.authservice.userData.uid));
-    });
-  } */
 }

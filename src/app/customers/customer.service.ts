@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class CustomerService {
   items: Observable<CustModell[]>;
+  myItems: Observable<CustModell[]>;
   itemsCollection: AngularFirestoreCollection<CustModell>;
   itemDoc: AngularFirestoreDocument<CustModell>;
   customer: Observable<CustModell>;
@@ -26,14 +27,20 @@ export class CustomerService {
         const id = a.payload.doc.id;
         const uid = JSON.stringify(this.authservice.userData.uid);
         return { id, uid, ...data };
-      })), map(myCustomers => myCustomers.filter(
-        cust => cust.uid === JSON.stringify(this.authservice.userData.uid)
-      ) )
+      }))
     );
   }
 
   getCustomers() {
     return this.items;
+  }
+
+  getMycustomers() {
+    return this.items.pipe(
+      map(
+        myCustomers => myCustomers.filter(
+          cust => cust.uid === JSON.stringify(this.authservice.userData.uid)
+        )));
   }
   GetCustomerById(id: string): Observable<CustModell> {
     this.itemDoc = this.dataBase.doc(`proba/${id}`);
@@ -56,11 +63,11 @@ export class CustomerService {
   deleteCustomer(item: CustModell) {
     this.itemDoc = this.dataBase.doc(`proba/${item.id}`);
     this.itemDoc.delete().then
-    (function () {
-      console.log('Document successfully deleted!');
-    }).catch(function(error) {
+      (function () {
+        console.log('Document successfully deleted!');
+      }).catch(function (error) {
         console.error('Error removing document: ', error);
-    });
+      });
   }
 
   updateCustomer(item: CustModell) {
