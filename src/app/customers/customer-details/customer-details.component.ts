@@ -18,7 +18,6 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy {
   customerDetails: CustModell;
   editState = false;
   itemToEdit: CustModell;
-  item: CustModell;
 
   constructor(
     private customerService: CustomerService,
