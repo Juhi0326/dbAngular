@@ -1,17 +1,35 @@
+// Core dependecies
 import { TestBed, async } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+// Third party dependencies
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// Custom lcoal dependencies
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { AppComponent } from './app.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { slideInAnimation } from './animation';
+import { environment } from '../environments/environment';
 
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [slideInAnimation],
-      declarations: [
-        AppComponent
+      imports: [
+        NoopAnimationsModule,
+        RouterTestingModule,
+        NgbModule,
+        AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        AngularFireStorageModule,
       ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA]
+      declarations: [
+        AppComponent,
+        NavBarComponent
+      ],
     }).compileComponents();
   }));
 
@@ -27,10 +45,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('dbAngular');
   });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to dbAngular!');
-  });
 });
