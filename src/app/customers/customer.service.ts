@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map, publishReplay, refCount } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { CustModell } from './cust-modell';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Injectable({
@@ -10,12 +11,13 @@ import { CustModell } from './cust-modell';
 })
 export class CustomerService {
   items: Observable<CustModell[]>;
+  myItems: Observable<CustModell[]>;
   itemsCollection: AngularFirestoreCollection<CustModell>;
   itemDoc: AngularFirestoreDocument<CustModell>;
   customer: Observable<CustModell>;
 
 
-  constructor(private dataBase: AngularFirestore) {
+  constructor(private dataBase: AngularFirestore, private authservice: AuthService) {
 
     this.itemsCollection = this.dataBase.collection('proba', ref => ref.orderBy('lName', 'asc'));
 
@@ -23,12 +25,22 @@ export class CustomerService {
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as CustModell;
         const id = a.payload.doc.id;
-        return { id, ...data };
+        const uid = JSON.stringify(this.authservice.userData.uid);
+        return { id, uid, ...data };
       }))
-    ).pipe(publishReplay(1)).pipe(refCount());
+    );
   }
+
   getCustomers() {
     return this.items;
+  }
+
+  getMycustomers() {
+    return this.items.pipe(
+      map(
+        myCustomers => myCustomers.filter(
+          cust => cust.uid === JSON.stringify(this.authservice.userData.uid)
+        )));
   }
   GetCustomerById(id: string): Observable<CustModell> {
     this.itemDoc = this.dataBase.doc(`proba/${id}`);
@@ -51,11 +63,11 @@ export class CustomerService {
   deleteCustomer(item: CustModell) {
     this.itemDoc = this.dataBase.doc(`proba/${item.id}`);
     this.itemDoc.delete().then
-    (function () {
-      console.log('Document successfully deleted!');
-    }).catch(function(error) {
+      (function () {
+        console.log('Document successfully deleted!');
+      }).catch(function (error) {
         console.error('Error removing document: ', error);
-    });
+      });
   }
 
   updateCustomer(item: CustModell) {

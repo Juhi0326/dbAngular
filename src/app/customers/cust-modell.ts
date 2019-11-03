@@ -7,7 +7,7 @@ export class CustModell {
   isFullTime: Boolean;
   lName: String;
   yearsOfExperience: Number;
-  uid: String;
+  uid?: String;
 
 }
 

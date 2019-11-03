@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { CustomerService } from './../customer.service';
@@ -12,7 +12,8 @@ import { MessageService } from './../../shared/messages/message.service';
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.css']
 })
-export class CustomerDetailsComponent implements OnInit {
+export class CustomerDetailsComponent implements OnInit, OnDestroy {
+
   editItemForm: FormGroup;
   customerDetails: CustModell;
   editState = false;
@@ -30,10 +31,11 @@ export class CustomerDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe((data: { customer: CustModell }) => {
       this.customerDetails = data.customer;
-    });
+    }).unsubscribe();
     const id = this.route.snapshot.paramMap.get('id');
     this.customerService.GetCustomerById(id)
-      .subscribe(res => this.customerDetails = res);
+      .subscribe(res => this.customerDetails = res).unsubscribe();
+
     this.editItemForm = this.formBuilder.group(
       {
         firstName: [`${this.customerDetails.fName}`, [Validators.required, Validators.minLength(3), Validators.maxLength(40),
@@ -93,5 +95,9 @@ export class CustomerDetailsComponent implements OnInit {
     this.customerDetails.yearsOfExperience = this.editItemForm.get('yearsOfExperience').value;
     this.customerDetails.uid = JSON.stringify(this.authService.userData.uid);
     return this.customerDetails;
+  }
+
+  ngOnDestroy(): void {
+
   }
 }

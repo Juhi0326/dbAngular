@@ -5,8 +5,8 @@
 <br>
 <br>
 
-<div *ngIf="items?.length > 0; else noItem" id="table">
-  <table id="customers">
+<div *ngIf=" items$ |  async as items" id="table" >
+  <table id="customers" >
     <thead>
       <th>Full name</th>
       <th>Edit</th>
@@ -22,7 +22,7 @@
 
   </table>
 
-  <ng-template #noItem>
+<!--   <ng-template #noItem>
     <hr>
     <h4>There is no item in the list</h4>
-  </ng-template>
+  </ng-template> -->

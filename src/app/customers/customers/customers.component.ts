@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CustomerService } from './../customer.service';
 import { AuthService } from './../../auth.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { AuthService } from './../../auth.service';
 })
 export class CustomersComponent implements OnInit {
   title = 'Customers';
-  items: CustModell[];
+  items$: Observable<CustModell[]>;
   searchText: string;
   editState = false;
   itemToEdit: CustModell;
@@ -27,9 +28,7 @@ export class CustomersComponent implements OnInit {
   ngOnInit() {
     this.searchText = this.route.snapshot.queryParamMap.get('filterBy') || '';
 
-    this.customerService.getCustomers().subscribe(items => {
-      this.items = items.filter(item => item.uid === JSON.stringify(this.authservice.userData.uid));
-    });
+    this.items$ = this.customerService.getMycustomers();
   }
 
   goBack(): void {
@@ -42,11 +41,5 @@ export class CustomersComponent implements OnInit {
         queryParams: { filterBy: this.searchText }
       }
     );
-  }
-
-  refresh() {
-    this.customerService.getCustomers().subscribe(items => {
-      this.items = items.filter(item => item.uid === JSON.stringify(this.authservice.userData.uid));
-    });
   }
 }
