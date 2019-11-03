@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
     "@ng-bootstrap/ng-bootstrap": "^4.1.1",
+    "acorn": "^7.1.0",
     "ajv": "^6.10.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
